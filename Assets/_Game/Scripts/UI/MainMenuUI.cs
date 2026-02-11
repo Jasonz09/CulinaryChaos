@@ -388,78 +388,66 @@ namespace IOChef.UI
 
         // ─── Button Group ───
         /// <summary>
-        /// Modernized button group with icons, gradients, and a "juicier" layout.
+        /// Valorant-style button group. Angular, high contrast, action-oriented.
         /// </summary>
         private void BuildButtonGroup(RectTransform p)
         {
-            // Center container for the main menu stack
+            // Center container
             var menuPanel = MakePanel(p, "MenuPanel", Color.clear);
-            menuPanel.anchorMin = new Vector2(0.30f, 0.15f); // Moved up slightly
-            menuPanel.anchorMax = new Vector2(0.70f, 0.65f);
+            menuPanel.anchorMin = new Vector2(0.08f, 0.45f); 
+            menuPanel.anchorMax = new Vector2(0.25f, 0.85f); // Top-Left alignment
             menuPanel.offsetMin = menuPanel.offsetMax = Vector2.zero;
             menuPanel.GetComponent<Image>().raycastTarget = false;
 
             var vlg = menuPanel.gameObject.AddComponent<VerticalLayoutGroup>();
-            vlg.spacing = 24; // Increased spacing
-            vlg.childAlignment = TextAnchor.MiddleCenter;
+            vlg.spacing = 10; // Tight spacing
+            vlg.childAlignment = TextAnchor.UpperLeft;
             vlg.childForceExpandWidth = true;
             vlg.childForceExpandHeight = false;
             vlg.childControlWidth = true;
             vlg.childControlHeight = false;
 
-            // 1. START COOKING - The Hero Button
-            // Orange-Red Gradient for high energy/action
-            Color startTop = new Color(1f, 0.5f, 0.2f);   // Bright Orange
-            Color startBot = new Color(0.9f, 0.2f, 0.1f); // Deep Red-Orange
-            MakeModernButton(menuPanel, "START COOKING", "UI/btn_play", startTop, startBot, 100, 36, OnPlayClicked);
+            // Iconic Valorant Red/Coral
+            Color valRed = new Color(1f, 0.27f, 0.33f); 
+            Color valDark = new Color(0.09f, 0.11f, 0.13f);
+            
+            // 1. PLAY (Hero Button)
+            // Big, Red, Chamfered
+            MakeModernButton(menuPanel, "    PLAY", "UI/btn_play", valRed, Color.white, 80, 48, OnPlayClicked, true);
 
-            // 2. RECIPE BOOK
-            // Golden-Yellow Gradient
-            Color bookTop = new Color(1f, 0.85f, 0.3f);   // Gold
-            Color bookBot = new Color(1f, 0.65f, 0.1f);   // Amber
-            MakeModernButton(menuPanel, "RECIPE BOOK", "UI/btn_menu", bookTop, bookBot, 80, 28, OnRecipeBookClicked);
+            // Spacer
+            var spacer = new GameObject("Spacer", typeof(RectTransform));
+            spacer.transform.SetParent(menuPanel.transform, false);
+            var le = spacer.AddComponent<LayoutElement>();
+            le.minHeight = 25; le.preferredHeight = 25;
 
-            // 3. STORE & OPTIONS (Side by Side)
-            var row = MakePanel(menuPanel, "BottomRow", Color.clear);
-            row.GetComponent<Image>().raycastTarget = false;
+            // 2. Secondary Menu Options (Dark tiles)
+            // Recipe
+            MakeModernButton(menuPanel, "RECIPE BOOK", "UI/btn_menu", valDark, valRed, 50, 22, OnRecipeBookClicked, false);
+            
+            // Store
+            MakeModernButton(menuPanel, "STORE", "UI/btn_shop", valDark, valRed, 50, 22, OnShopClicked, false);
 
-            var hlg = row.gameObject.AddComponent<HorizontalLayoutGroup>();
-            hlg.spacing = 20;
-            hlg.childAlignment = TextAnchor.MiddleCenter;
-            hlg.childForceExpandWidth = true;
-            hlg.childForceExpandHeight = true;
-            hlg.childControlWidth = true;
-            hlg.childControlHeight = true;
-            AddLE(row.gameObject, 70); // Row height
+            // Options
+            MakeModernButton(menuPanel, "OPTIONS", "UI/btn_settings", valDark, valRed, 50, 22, OnSettingsClicked, false);
 
-            // Purple/Blue style for Store, Gray/Metallic for Options
-            Color storeTop = new Color(0.6f, 0.4f, 1f);
-            Color storeBot = new Color(0.4f, 0.2f, 0.9f);
-            MakeModernButton(row, "STORE", "UI/btn_shop", storeTop, storeBot, 0, 24, OnShopClicked);
-
-            Color optTop = new Color(0.4f, 0.45f, 0.5f);
-            Color optBot = new Color(0.25f, 0.3f, 0.35f);
-            MakeModernButton(row, "OPTIONS", "UI/btn_settings", optTop, optBot, 0, 24, OnSettingsClicked);
-
-            // ── Bottom-Right Pills (Heroes, Chests, Pass) ──
-            // Kept minimal to not clutter main view
+            // 3. Sub-menu / Footer items (Heroes, Pass, etc)
+            // We can place these in a row at the bottom right, outside the main stack
             var extras = MakePanel(p, "Extras", Color.clear);
-            extras.anchorMin = new Vector2(0.98f, 0.02f);
-            extras.anchorMax = new Vector2(0.98f, 0.02f);
+            extras.anchorMin = new Vector2(0.95f, 0.05f);
+            extras.anchorMax = new Vector2(0.95f, 0.05f);
             extras.pivot = new Vector2(1f, 0f);
-            extras.sizeDelta = new Vector2(400, 48);
+            extras.sizeDelta = new Vector2(600, 60);
             
             var ehlg = extras.gameObject.AddComponent<HorizontalLayoutGroup>();
-            ehlg.spacing = 10;
+            ehlg.spacing = 15;
             ehlg.childAlignment = TextAnchor.MiddleRight;
             ehlg.childForceExpandWidth = false;
             ehlg.childControlWidth = true;
             
-            // Dark semi-transparent pills
-            Color pillCol = new Color(0,0,0,0.6f);
-            MakeModernPill(extras, "HEROES", "UI/icon_gems", pillCol, OnHeroesClicked);
-            MakeModernPill(extras, "CHESTS", "UI/icon_credits", pillCol, OnChestsClicked); // using credits icon as placeholder for chest
-            MakeModernPill(extras, "PASS", "UI/star_filled", pillCol, OnSeasonPassClicked);
+            MakeModernPill(extras, "AGENTS", "UI/icon_gems", valDark, OnHeroesClicked);
+            MakeModernPill(extras, "VAULT", "UI/icon_credits", valDark, OnChestsClicked);
+            MakeModernPill(extras, "BATTLEPASS", "UI/star_filled", valDark, OnSeasonPassClicked);
         }
 
         // ─── Recipe Book Click Handler ───
@@ -1342,85 +1330,87 @@ namespace IOChef.UI
             return s;
         }
 
-        // ─── Modern Button System ───
+        // ─── Modern Button System (Valorant Style) ───
+
+        private Dictionary<string, Sprite> _valorantCache = new Dictionary<string, Sprite>();
 
         /// <summary>
-        /// Returns (or generates) a high-quality 9-slice rounded-rectangle sprite
-        /// with crisp anti-aliased edges. Smaller radius = sleek modern look.
+        /// Generates a "Valorant-style" angular sprite with chamfered corners.
         /// </summary>
-        // ─── Sprite Generators ───
-
-        private Dictionary<string, Sprite> _gradientCache = new Dictionary<string, Sprite>();
-
-        /// <summary>
-        /// Generates a rounded rectangle sprite with a vertical gradient fill.
-        /// </summary>
-        private Sprite GeneratGradientSprite(int w, int h, int r, Color top, Color bottom)
+        private Sprite GenerateValorantSprite(int w, int h, Color color, Color borderCol, bool isHero)
         {
-            string key = $"{w}x{h}_{r}_{top}_{bottom}";
-            if (_gradientCache.ContainsKey(key) && _gradientCache[key] != null) return _gradientCache[key];
+             string key = $"Val_{w}x{h}_{color}_{borderCol}_{isHero}";
+             if (_valorantCache.ContainsKey(key) && _valorantCache[key] != null) return _valorantCache[key];
 
-            var tex = new Texture2D(w, h, TextureFormat.RGBA32, false);
-            tex.filterMode = FilterMode.Bilinear;
-            tex.wrapMode = TextureWrapMode.Clamp;
+             var tex = new Texture2D(w, h, TextureFormat.RGBA32, false);
+             tex.filterMode = FilterMode.Point; 
+             tex.wrapMode = TextureWrapMode.Clamp;
 
-            Color[] pixels = new Color[w * h];
-            for (int y = 0; y < h; y++)
-            {
-                float vf = (float)y / (h - 1);
-                Color rowColor = Color.Lerp(bottom, top, vf); // Gradient from bottom to top
+             Color[] pixels = new Color[w * h];
+             // Hero buttons have larger chamfers
+             int chamfer = isHero ? 24 : 12; 
+             int border = 2; // Thin sleek border
 
-                for (int x = 0; x < w; x++)
-                {
-                    // SDF Alpha for rounded corners
-                    float dist = SdfRoundedRect(x, y, w, h, r);
-                    float alpha = Mathf.Clamp01(1f - dist);
-                    
-                    Color final = rowColor;
-                    final.a *= alpha;
-                    pixels[y * w + x] = final;
-                }
-            }
+             for (int y = 0; y < h; y++)
+             {
+                 for (int x = 0; x < w; x++)
+                 {
+                     // Texture coordinates: (0,0) is bottom-left
+                     // Top-Left corner: x near 0, y near h-1
+                     // Bottom-Right corner: x near w-1, y near 0
+                     
+                     // 1. Cut Corners Logic
+                     bool cut = false;
+                     // Top-Left Cut: y > x + (h - chamfer) => x + (h-y) < chamfer
+                     if (x + (h - y - 1) < chamfer) cut = true;
+                     // Bottom-Right Cut: y < x - (w - chamfer) => (w-x) + y < chamfer
+                     if ((w - x - 1) + y < chamfer) cut = true;
 
-            tex.SetPixels(pixels);
-            tex.Apply();
+                     if (cut)
+                     {
+                         pixels[y * w + x] = Color.clear;
+                         continue;
+                     }
 
-            var sprite = Sprite.Create(tex, new Rect(0,0,w,h), new Vector2(0.5f, 0.5f));
-            _gradientCache[key] = sprite;
-            return sprite;
+                     // 2. Border Logic
+                     bool isBorder = false;
+                     // Outer bounds
+                     if (x < border || x >= w - border || y < border || y >= h - border) isBorder = true;
+                     // Chamfer edges
+                     if (x + (h - y - 1) < chamfer + border) isBorder = true;
+                     if ((w - x - 1) + y < chamfer + border) isBorder = true;
+                     
+                     // Hero buttons get a different border style (lighter)
+                     // Regular buttons get outline
+                     if (isBorder && !isHero)
+                        pixels[y * w + x] = borderCol; // Using secondary color as border
+                     else
+                        pixels[y * w + x] = color;
+                 }
+             }
+
+             tex.SetPixels(pixels);
+             tex.Apply();
+
+             var sprite = Sprite.Create(tex, new Rect(0,0,w,h), new Vector2(0.5f, 0.5f));
+             _valorantCache[key] = sprite;
+             return sprite;
+        }
+
+        private Sprite GetSimpleRectSprite(Color c) {
+            return GenerateValorantSprite(64, 64, c, c, false);
         }
 
         /// <summary>
-        /// Simple white rounded rect for shadows/tinting.
-        /// </summary>
-        private Sprite GetRoundedRectSprite(int radius)
-        {
-             // Radius 20, White-White gradient
-             return GeneratGradientSprite(128, 128, radius, Color.white, Color.white);
-        }
-
-        /// <summary>Signed-distance field for a rounded rectangle.</summary>
-        private static float SdfRoundedRect(int px, int py, int w, int h, int r)
-        {
-            float x = px - w * 0.5f;
-            float y = py - h * 0.5f;
-            float hw = w * 0.5f - r;
-            float hh = h * 0.5f - r;
-            float dx = Mathf.Max(Mathf.Abs(x) - hw, 0);
-            float dy = Mathf.Max(Mathf.Abs(y) - hh, 0);
-            return Mathf.Sqrt(dx * dx + dy * dy) - r;
-        }
-
-        /// <summary>
-        /// Creates a high-quality modern gradient button with icon.
+        /// Creates a high-quality angular button.
         /// </summary>
         private void MakeModernButton(RectTransform parent, string label, string iconPath, 
-            Color topColor, Color botColor, float height, int fontSize, UnityEngine.Events.UnityAction onClick)
+            Color faceColor, Color borderColor, float height, int fontSize, 
+            UnityEngine.Events.UnityAction onClick, bool isHero = false)
         {
             var btnObj = new GameObject($"Btn_{label}", typeof(RectTransform), typeof(CanvasGroup), typeof(Button));
             btnObj.transform.SetParent(parent, false);
             
-            // Layout Element if height is specified
             if (height > 0)
             {
                 var le = btnObj.AddComponent<LayoutElement>();
@@ -1428,49 +1418,31 @@ namespace IOChef.UI
                 le.minHeight = height;
             }
 
-            // 1. Shadow/Depth Layer (The "3D" part)
-            var shadowImg = CreateImage(btnObj, "Shadow");
-            shadowImg.sprite = GetRoundedRectSprite(20);
-            shadowImg.color = new Color(0, 0, 0, 0.3f);
-            shadowImg.type = Image.Type.Simple; // Generated texture is non-sliced unless updated
-            // Adjust scaling to standard
-            var shadowRT = shadowImg.rectTransform;
-            shadowRT.anchorMin = Vector2.zero; shadowRT.anchorMax = Vector2.one;
-            shadowRT.offsetMin = new Vector2(2, -4); // Push shadow down
-            shadowRT.offsetMax = new Vector2(-2, -4);
-
-            // 2. Main Gradient Face
+            // 1. Main Background
             var faceImg = CreateImage(btnObj, "Face");
-            faceImg.sprite = GeneratGradientSprite(256, 128, 20, topColor, botColor); // Wide texture for scaling
+            // Use 128x64 or 256x128 depending on aspect? 
+            // We generate 256x128 to have enough pixels for the chamfer details
+            faceImg.sprite = GenerateValorantSprite(256, 128, faceColor, borderColor, isHero);
             faceImg.type = Image.Type.Simple; 
             
             var faceRT = faceImg.rectTransform;
             faceRT.anchorMin = Vector2.zero; faceRT.anchorMax = Vector2.one;
-            faceRT.offsetMin = new Vector2(0, 0); 
-            faceRT.offsetMax = new Vector2(0, 0);
+            faceRT.offsetMin = Vector2.zero; faceRT.offsetMax = Vector2.zero;
 
-            // 3. Highlight/Glaze (Top rim) - Optional polish
-            var glazeObj = CreateImage(btnObj, "Glaze");
-            glazeObj.sprite = GetRoundedRectSprite(20); // Reuse white sprite
-            glazeObj.color = new Color(1, 1, 1, 0.15f); // Subtle white tint
-            glazeObj.type = Image.Type.Simple;
-            var glazeRT = glazeObj.rectTransform;
-            glazeRT.anchorMin = new Vector2(0, 0.5f); glazeRT.anchorMax = Vector2.one;
-            glazeRT.offsetMin = new Vector2(4, 0); glazeRT.offsetMax = new Vector2(-4, -2);
-            glazeObj.raycastTarget = false;
-
-            // 4. Content Container (Horizontal Layout for Icon + Text)
+            // 2. Content
             var contentObj = new GameObject("Content", typeof(RectTransform));
             contentObj.transform.SetParent(btnObj.transform, false);
             Stretch(contentObj.GetComponent<RectTransform>());
+            
             var hlg = contentObj.AddComponent<HorizontalLayoutGroup>();
-            hlg.padding = new RectOffset(24, 24, 10, 10);
+            // Hero buttons have more padding
+            hlg.padding = new RectOffset(isHero ? 40 : 20, 20, 5, 5);
             hlg.spacing = 15;
-            hlg.childAlignment = TextAnchor.MiddleCenter;
+            hlg.childAlignment = isHero ? TextAnchor.MiddleLeft : TextAnchor.MiddleLeft;
             hlg.childControlWidth = false; 
             hlg.childForceExpandWidth = false;
 
-            // 5. Icon
+            // 3. Icon
             if (!string.IsNullOrEmpty(iconPath))
             {
                 Sprite iconSprite = Resources.Load<Sprite>(iconPath);
@@ -1479,43 +1451,52 @@ namespace IOChef.UI
                     var iconImg = CreateImage(contentObj, "Icon");
                     iconImg.sprite = iconSprite;
                     iconImg.preserveAspect = true;
+                    // White icons usually
+                    iconImg.color = isHero ? Color.white : new Color(1,1,1, 0.8f);
+                    
                     var le = iconImg.gameObject.AddComponent<LayoutElement>();
-                    le.preferredWidth = height > 0 ? height * 0.6f : 32;
-                    le.preferredHeight = height > 0 ? height * 0.6f : 32;
+                    float iconSize = fontSize * 1.2f;
+                    le.preferredWidth = iconSize;
+                    le.preferredHeight = iconSize;
                 }
             }
 
-            // 6. Text
+            // 4. Text
             var lblObj = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
             lblObj.transform.SetParent(contentObj.transform, false);
             var tmp = lblObj.GetComponent<TextMeshProUGUI>();
             tmp.text = label;
             tmp.fontSize = fontSize;
-            tmp.color = Color.white;
+            tmp.color = isHero ? Color.white : new Color(0.9f, 0.9f, 0.9f);
             tmp.fontStyle = FontStyles.Bold;
-            tmp.alignment = TextAlignmentOptions.Left; // Align left next to icon
-            tmp.characterSpacing = 2f; 
+            tmp.alignment = TextAlignmentOptions.Left; 
+            tmp.characterSpacing = 4f; // Wide spacing like Valorant
             tmp.enableWordWrapping = false;
             
-            // Button Logic
+            // 5. Button Component
             var btn = btnObj.GetComponent<Button>();
             btn.targetGraphic = faceImg;
-            btn.transition = Selectable.Transition.None; // We use custom spring
-            if (onClick != null) btn.onClick.AddListener(onClick);
+            btn.transition = Selectable.Transition.ColorTint;
+            var cols = btn.colors;
+            cols.normalColor = Color.white;
+            cols.highlightedColor = new Color(1.2f, 1.2f, 1.2f); // Brighten on hover
+            cols.pressedColor = new Color(0.8f, 0.8f, 0.8f);
+            btn.colors = cols;
 
-            btnObj.AddComponent<ButtonSpringEffect>();
+            if (onClick != null) btn.onClick.AddListener(onClick);
         }
 
         private void MakeModernPill(RectTransform parent, string label, string iconPath, Color color, UnityEngine.Events.UnityAction action)
         {
-            // Similar to button but smaller/simpler
-            var go = new GameObject($"Pill_{label}", typeof(RectTransform), typeof(Image), typeof(Button), typeof(HorizontalLayoutGroup));
+            // Simple rectangular pill/tab
+            var go = new GameObject($"Tab_{label}", typeof(RectTransform), typeof(Image), typeof(Button), typeof(HorizontalLayoutGroup));
             go.transform.SetParent(parent, false);
             
             var img = go.GetComponent<Image>();
-            img.sprite = GetRoundedRectSprite(16);
+            // Use same generator but small/no chamfer logic by reusing isHero=false which has small chamfer
+            img.sprite = GenerateValorantSprite(128, 64, color, color, false);
             img.type = Image.Type.Simple;
-            img.color = color;
+            img.color = Color.white; 
 
             var btn = go.GetComponent<Button>();
             btn.targetGraphic = img;
@@ -1528,7 +1509,6 @@ namespace IOChef.UI
             hlg.childAlignment = TextAnchor.MiddleCenter;
             hlg.childControlWidth = true; 
 
-            // Icon
             if (!string.IsNullOrEmpty(iconPath))
             {
                 Sprite ico = Resources.Load<Sprite>(iconPath);
@@ -1542,7 +1522,6 @@ namespace IOChef.UI
                 }
             }
 
-            // Text
             var t = MakeText(go.GetComponent<RectTransform>(), "Txt", label, 14, Color.white, FontStyles.Bold);
             t.GetComponent<TextMeshProUGUI>().enableWordWrapping = false;
         }
