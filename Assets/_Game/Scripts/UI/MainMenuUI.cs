@@ -388,77 +388,78 @@ namespace IOChef.UI
 
         // ─── Button Group ───
         /// <summary>
-        /// Clean modern UI – no panel background, buttons float over the template art.
+        /// Modernized button group with icons, gradients, and a "juicier" layout.
         /// </summary>
         private void BuildButtonGroup(RectTransform p)
         {
-            // ── Invisible container aligned to the template's button region ──
+            // Center container for the main menu stack
             var menuPanel = MakePanel(p, "MenuPanel", Color.clear);
-            menuPanel.anchorMin = new Vector2(0.30f, 0.08f);
-            menuPanel.anchorMax = new Vector2(0.70f, 0.58f);
+            menuPanel.anchorMin = new Vector2(0.30f, 0.15f); // Moved up slightly
+            menuPanel.anchorMax = new Vector2(0.70f, 0.65f);
             menuPanel.offsetMin = menuPanel.offsetMax = Vector2.zero;
             menuPanel.GetComponent<Image>().raycastTarget = false;
 
-            var grp = MakePanel(menuPanel, "ButtonGroup", Color.clear);
-            Stretch(grp);
-            grp.GetComponent<Image>().raycastTarget = false;
-
-            var vlg = grp.gameObject.AddComponent<VerticalLayoutGroup>();
-            vlg.spacing = 16;
+            var vlg = menuPanel.gameObject.AddComponent<VerticalLayoutGroup>();
+            vlg.spacing = 24; // Increased spacing
             vlg.childAlignment = TextAnchor.MiddleCenter;
             vlg.childForceExpandWidth = true;
-            vlg.childForceExpandHeight = true;
+            vlg.childForceExpandHeight = false;
             vlg.childControlWidth = true;
-            vlg.childControlHeight = true;
-            vlg.padding = new RectOffset(24, 24, 16, 16);
+            vlg.childControlHeight = false;
 
-            // ── Clean modern palette ──
-            Color ctaColor    = new Color(0.94f, 0.33f, 0.19f);        // Vibrant coral-red
-            Color secondColor = new Color(1f, 0.72f, 0.22f);           // Warm golden
-            Color glassColor  = new Color(1f, 1f, 1f, 0.13f);          // Frosted white glass
+            // 1. START COOKING - The Hero Button
+            // Orange-Red Gradient for high energy/action
+            Color startTop = new Color(1f, 0.5f, 0.2f);   // Bright Orange
+            Color startBot = new Color(0.9f, 0.2f, 0.1f); // Deep Red-Orange
+            MakeModernButton(menuPanel, "START COOKING", "UI/btn_play", startTop, startBot, 100, 36, OnPlayClicked);
 
-            // Slot 1 – START COOKING (hero button)
-            MakeModernButton(grp, "START COOKING", ctaColor, Color.white, 32, 0, OnPlayClicked);
+            // 2. RECIPE BOOK
+            // Golden-Yellow Gradient
+            Color bookTop = new Color(1f, 0.85f, 0.3f);   // Gold
+            Color bookBot = new Color(1f, 0.65f, 0.1f);   // Amber
+            MakeModernButton(menuPanel, "RECIPE BOOK", "UI/btn_menu", bookTop, bookBot, 80, 28, OnRecipeBookClicked);
 
-            // Slot 2 – RECIPE BOOK
-            MakeModernButton(grp, "RECIPE BOOK", secondColor, new Color(0.12f, 0.08f, 0.02f), 24, 0, OnRecipeBookClicked);
-
-            // Slots 3+4 – STORE and OPTIONS side-by-side
-            var row = MakePanel(grp, "BottomRow", Color.clear);
+            // 3. STORE & OPTIONS (Side by Side)
+            var row = MakePanel(menuPanel, "BottomRow", Color.clear);
             row.GetComponent<Image>().raycastTarget = false;
 
             var hlg = row.gameObject.AddComponent<HorizontalLayoutGroup>();
-            hlg.spacing = 16;
+            hlg.spacing = 20;
             hlg.childAlignment = TextAnchor.MiddleCenter;
             hlg.childForceExpandWidth = true;
             hlg.childForceExpandHeight = true;
             hlg.childControlWidth = true;
             hlg.childControlHeight = true;
+            AddLE(row.gameObject, 70); // Row height
 
-            MakeModernButton(row, "STORE", glassColor, Color.white, 20, 0, OnShopClicked);
-            MakeModernButton(row, "OPTIONS", glassColor, Color.white, 20, 0, OnSettingsClicked);
+            // Purple/Blue style for Store, Gray/Metallic for Options
+            Color storeTop = new Color(0.6f, 0.4f, 1f);
+            Color storeBot = new Color(0.4f, 0.2f, 0.9f);
+            MakeModernButton(row, "STORE", "UI/btn_shop", storeTop, storeBot, 0, 24, OnShopClicked);
 
-            // ── Bottom-right: HEROES / CHESTS / PASS ──
+            Color optTop = new Color(0.4f, 0.45f, 0.5f);
+            Color optBot = new Color(0.25f, 0.3f, 0.35f);
+            MakeModernButton(row, "OPTIONS", "UI/btn_settings", optTop, optBot, 0, 24, OnSettingsClicked);
+
+            // ── Bottom-Right Pills (Heroes, Chests, Pass) ──
+            // Kept minimal to not clutter main view
             var extras = MakePanel(p, "Extras", Color.clear);
-            extras.anchorMin = new Vector2(1f, 0f);
-            extras.anchorMax = new Vector2(1f, 0f);
+            extras.anchorMin = new Vector2(0.98f, 0.02f);
+            extras.anchorMax = new Vector2(0.98f, 0.02f);
             extras.pivot = new Vector2(1f, 0f);
-            extras.sizeDelta = new Vector2(300, 32);
-            extras.anchoredPosition = new Vector2(-16, 14);
-            extras.GetComponent<Image>().raycastTarget = false;
-
+            extras.sizeDelta = new Vector2(400, 48);
+            
             var ehlg = extras.gameObject.AddComponent<HorizontalLayoutGroup>();
-            ehlg.spacing = 8;
-            ehlg.childAlignment = TextAnchor.MiddleCenter;
-            ehlg.childForceExpandWidth = true;
-            ehlg.childForceExpandHeight = true;
+            ehlg.spacing = 10;
+            ehlg.childAlignment = TextAnchor.MiddleRight;
+            ehlg.childForceExpandWidth = false;
             ehlg.childControlWidth = true;
-            ehlg.childControlHeight = true;
-
-            Color pillColor = new Color(0f, 0f, 0f, 0.45f);
-            MakeModernButton(extras, "HEROES", pillColor, Color.white, 12, 0, OnHeroesClicked);
-            MakeModernButton(extras, "CHESTS", pillColor, Color.white, 12, 0, OnChestsClicked);
-            MakeModernButton(extras, "PASS", pillColor, Color.white, 12, 0, OnSeasonPassClicked);
+            
+            // Dark semi-transparent pills
+            Color pillCol = new Color(0,0,0,0.6f);
+            MakeModernPill(extras, "HEROES", "UI/icon_gems", pillCol, OnHeroesClicked);
+            MakeModernPill(extras, "CHESTS", "UI/icon_credits", pillCol, OnChestsClicked); // using credits icon as placeholder for chest
+            MakeModernPill(extras, "PASS", "UI/star_filled", pillCol, OnSeasonPassClicked);
         }
 
         // ─── Recipe Book Click Handler ───
@@ -1347,39 +1348,55 @@ namespace IOChef.UI
         /// Returns (or generates) a high-quality 9-slice rounded-rectangle sprite
         /// with crisp anti-aliased edges. Smaller radius = sleek modern look.
         /// </summary>
-        private Sprite GetRoundedButtonSprite()
+        // ─── Sprite Generators ───
+
+        private Dictionary<string, Sprite> _gradientCache = new Dictionary<string, Sprite>();
+
+        /// <summary>
+        /// Generates a rounded rectangle sprite with a vertical gradient fill.
+        /// </summary>
+        private Sprite GeneratGradientSprite(int w, int h, int r, Color top, Color bottom)
         {
-            if (_cachedRoundedSprite != null) return _cachedRoundedSprite;
+            string key = $"{w}x{h}_{r}_{top}_{bottom}";
+            if (_gradientCache.ContainsKey(key) && _gradientCache[key] != null) return _gradientCache[key];
 
-            int size = 128;
-            int radius = 20;
-            var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+            var tex = new Texture2D(w, h, TextureFormat.RGBA32, false);
             tex.filterMode = FilterMode.Bilinear;
+            tex.wrapMode = TextureWrapMode.Clamp;
 
-            var pixels = new Color[size * size];
-            for (int y = 0; y < size; y++)
+            Color[] pixels = new Color[w * h];
+            for (int y = 0; y < h; y++)
             {
-                for (int x = 0; x < size; x++)
+                float vf = (float)y / (h - 1);
+                Color rowColor = Color.Lerp(bottom, top, vf); // Gradient from bottom to top
+
+                for (int x = 0; x < w; x++)
                 {
-                    float dist = SdfRoundedRect(x, y, size, size, radius);
+                    // SDF Alpha for rounded corners
+                    float dist = SdfRoundedRect(x, y, w, h, r);
                     float alpha = Mathf.Clamp01(1f - dist);
-                    pixels[y * size + x] = new Color(1, 1, 1, alpha);
+                    
+                    Color final = rowColor;
+                    final.a *= alpha;
+                    pixels[y * w + x] = final;
                 }
             }
 
             tex.SetPixels(pixels);
             tex.Apply();
 
-            float border = radius + 2;
-            _cachedRoundedSprite = Sprite.Create(
-                tex,
-                new Rect(0, 0, size, size),
-                new Vector2(0.5f, 0.5f),
-                100f, 0,
-                SpriteMeshType.FullRect,
-                new Vector4(border, border, border, border)
-            );
-            return _cachedRoundedSprite;
+            var sprite = Sprite.Create(tex, new Rect(0,0,w,h), new Vector2(0.5f, 0.5f));
+            _gradientCache[key] = sprite;
+            return sprite;
+        }
+
+        /// <summary>
+        /// Simple white rounded rect for shadows/tinting.
+        /// </summary>
+        private Sprite GetRoundedRectSprite(int radius)
+        {
+             // Radius 20, White-White gradient
+             return GeneratGradientSprite(128, 128, radius, Color.white, Color.white);
         }
 
         /// <summary>Signed-distance field for a rounded rectangle.</summary>
@@ -1395,43 +1412,151 @@ namespace IOChef.UI
         }
 
         /// <summary>
-        /// Creates a clean modern button: rounded 9-slice background,
-        /// no outlines/glows, just smooth colour with spring animation.
+        /// Creates a high-quality modern gradient button with icon.
         /// </summary>
-        private void MakeModernButton(RectTransform parent, string label, Color bgColor,
-            Color textColor, int fontSize, float height, UnityEngine.Events.UnityAction onClick)
+        private void MakeModernButton(RectTransform parent, string label, string iconPath, 
+            Color topColor, Color botColor, float height, int fontSize, UnityEngine.Events.UnityAction onClick)
         {
-            var go = new GameObject($"Btn_{label}", typeof(RectTransform), typeof(CanvasGroup), typeof(Image), typeof(Button));
-            go.transform.SetParent(parent, false);
-            if (height > 0) AddLE(go, height);
+            var btnObj = new GameObject($"Btn_{label}", typeof(RectTransform), typeof(CanvasGroup), typeof(Button));
+            btnObj.transform.SetParent(parent, false);
+            
+            // Layout Element if height is specified
+            if (height > 0)
+            {
+                var le = btnObj.AddComponent<LayoutElement>();
+                le.preferredHeight = height;
+                le.minHeight = height;
+            }
 
-            var img = go.GetComponent<Image>();
-            img.sprite = GetRoundedButtonSprite();
-            img.type = Image.Type.Sliced;
-            img.pixelsPerUnitMultiplier = 1f;
-            img.color = bgColor;
+            // 1. Shadow/Depth Layer (The "3D" part)
+            var shadowImg = CreateImage(btnObj, "Shadow");
+            shadowImg.sprite = GetRoundedRectSprite(20);
+            shadowImg.color = new Color(0, 0, 0, 0.3f);
+            shadowImg.type = Image.Type.Simple; // Generated texture is non-sliced unless updated
+            // Adjust scaling to standard
+            var shadowRT = shadowImg.rectTransform;
+            shadowRT.anchorMin = Vector2.zero; shadowRT.anchorMax = Vector2.one;
+            shadowRT.offsetMin = new Vector2(2, -4); // Push shadow down
+            shadowRT.offsetMax = new Vector2(-2, -4);
 
-            var btn = go.GetComponent<Button>();
-            btn.transition = Selectable.Transition.None;
-            btn.targetGraphic = img;
-            if (onClick != null) btn.onClick.AddListener(onClick);
+            // 2. Main Gradient Face
+            var faceImg = CreateImage(btnObj, "Face");
+            faceImg.sprite = GeneratGradientSprite(256, 128, 20, topColor, botColor); // Wide texture for scaling
+            faceImg.type = Image.Type.Simple; 
+            
+            var faceRT = faceImg.rectTransform;
+            faceRT.anchorMin = Vector2.zero; faceRT.anchorMax = Vector2.one;
+            faceRT.offsetMin = new Vector2(0, 0); 
+            faceRT.offsetMax = new Vector2(0, 0);
 
-            // Label – wide letter-spacing, clean weight
-            var lbl = new GameObject("Lbl", typeof(RectTransform), typeof(TextMeshProUGUI));
-            lbl.transform.SetParent(go.transform, false);
-            var tmp = lbl.GetComponent<TextMeshProUGUI>();
+            // 3. Highlight/Glaze (Top rim) - Optional polish
+            var glazeObj = CreateImage(btnObj, "Glaze");
+            glazeObj.sprite = GetRoundedRectSprite(20); // Reuse white sprite
+            glazeObj.color = new Color(1, 1, 1, 0.15f); // Subtle white tint
+            glazeObj.type = Image.Type.Simple;
+            var glazeRT = glazeObj.rectTransform;
+            glazeRT.anchorMin = new Vector2(0, 0.5f); glazeRT.anchorMax = Vector2.one;
+            glazeRT.offsetMin = new Vector2(4, 0); glazeRT.offsetMax = new Vector2(-4, -2);
+            glazeObj.raycastTarget = false;
+
+            // 4. Content Container (Horizontal Layout for Icon + Text)
+            var contentObj = new GameObject("Content", typeof(RectTransform));
+            contentObj.transform.SetParent(btnObj.transform, false);
+            Stretch(contentObj.GetComponent<RectTransform>());
+            var hlg = contentObj.AddComponent<HorizontalLayoutGroup>();
+            hlg.padding = new RectOffset(24, 24, 10, 10);
+            hlg.spacing = 15;
+            hlg.childAlignment = TextAnchor.MiddleCenter;
+            hlg.childControlWidth = false; 
+            hlg.childForceExpandWidth = false;
+
+            // 5. Icon
+            if (!string.IsNullOrEmpty(iconPath))
+            {
+                Sprite iconSprite = Resources.Load<Sprite>(iconPath);
+                if (iconSprite != null)
+                {
+                    var iconImg = CreateImage(contentObj, "Icon");
+                    iconImg.sprite = iconSprite;
+                    iconImg.preserveAspect = true;
+                    var le = iconImg.gameObject.AddComponent<LayoutElement>();
+                    le.preferredWidth = height > 0 ? height * 0.6f : 32;
+                    le.preferredHeight = height > 0 ? height * 0.6f : 32;
+                }
+            }
+
+            // 6. Text
+            var lblObj = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
+            lblObj.transform.SetParent(contentObj.transform, false);
+            var tmp = lblObj.GetComponent<TextMeshProUGUI>();
             tmp.text = label;
             tmp.fontSize = fontSize;
-            tmp.color = textColor;
+            tmp.color = Color.white;
             tmp.fontStyle = FontStyles.Bold;
-            tmp.alignment = TextAlignmentOptions.Center;
-            tmp.characterSpacing = 6f;
-            tmp.raycastTarget = false;
-            Stretch(lbl.GetComponent<RectTransform>());
+            tmp.alignment = TextAlignmentOptions.Left; // Align left next to icon
+            tmp.characterSpacing = 2f; 
+            tmp.enableWordWrapping = false;
+            
+            // Button Logic
+            var btn = btnObj.GetComponent<Button>();
+            btn.targetGraphic = faceImg;
+            btn.transition = Selectable.Transition.None; // We use custom spring
+            if (onClick != null) btn.onClick.AddListener(onClick);
 
-            // Modern spring animation (replaces old bounce)
-            go.AddComponent<ButtonSpringEffect>();
+            btnObj.AddComponent<ButtonSpringEffect>();
         }
+
+        private void MakeModernPill(RectTransform parent, string label, string iconPath, Color color, UnityEngine.Events.UnityAction action)
+        {
+            // Similar to button but smaller/simpler
+            var go = new GameObject($"Pill_{label}", typeof(RectTransform), typeof(Image), typeof(Button), typeof(HorizontalLayoutGroup));
+            go.transform.SetParent(parent, false);
+            
+            var img = go.GetComponent<Image>();
+            img.sprite = GetRoundedRectSprite(16);
+            img.type = Image.Type.Simple;
+            img.color = color;
+
+            var btn = go.GetComponent<Button>();
+            btn.targetGraphic = img;
+            btn.transition = Selectable.Transition.ColorTint;
+            if (action != null) btn.onClick.AddListener(action);
+
+            var hlg = go.GetComponent<HorizontalLayoutGroup>();
+            hlg.padding = new RectOffset(16, 16, 8, 8);
+            hlg.spacing = 8;
+            hlg.childAlignment = TextAnchor.MiddleCenter;
+            hlg.childControlWidth = true; 
+
+            // Icon
+            if (!string.IsNullOrEmpty(iconPath))
+            {
+                Sprite ico = Resources.Load<Sprite>(iconPath);
+                if (ico != null)
+                {
+                    var i = CreateImage(go, "Icon");
+                    i.sprite = ico;
+                    i.preserveAspect = true;
+                    var le = i.gameObject.AddComponent<LayoutElement>();
+                    le.preferredWidth = 20; le.preferredHeight = 20;
+                }
+            }
+
+            // Text
+            var t = MakeText(go.GetComponent<RectTransform>(), "Txt", label, 14, Color.white, FontStyles.Bold);
+            t.GetComponent<TextMeshProUGUI>().enableWordWrapping = false;
+        }
+
+        private Image CreateImage(GameObject parent, string name)
+        {
+            var go = new GameObject(name, typeof(RectTransform), typeof(Image));
+            go.transform.SetParent(parent.transform, false);
+            return go.GetComponent<Image>();
+        }
+
+        /* 
+           Preserving existing positioning helpers below 
+        */
 
         // ─── Positioning helpers ───
         /// <summary>
