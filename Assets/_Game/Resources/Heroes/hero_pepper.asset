@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe80171df7064cb29695a284170bbe7, type: 3}
+  m_Name: hero_pepper
+  m_EditorClassIdentifier: Assembly-CSharp::IOChef.Heroes.HeroDataSO
+  heroId: hero_pepper
+  heroName: Pepper
+  description: A fiery chef who knows the value of a good tip. Earns more points
+    per order.
+  rarity: 0
+  heroArt: {fileID: 0}
+  heroPortrait: {fileID: 0}
+  isFreeHero: 0
+  purchasePrice: 0
+  acquisitionMethod: Chest
+  abilityName: Big Tipper
+  abilityDescription: Bonus score on every completed order.
+  baseCookTimeMultiplier: 1
+  baseBurnTimeMultiplier: 1
+  baseScoreMultiplier: 1.03
+  baseMovementSpeedMultiplier: 1
+  baseInteractionRadiusMultiplier: 1
+  baseBonusTimeSeconds: 0
+  maxCookTimeMultiplier: 0.96
+  maxBurnTimeMultiplier: 1.05
+  maxScoreMultiplier: 1.18
+  maxMovementSpeedMultiplier: 1.04
+  maxInteractionRadiusMultiplier: 1.04
+  maxBonusTimeSeconds: 2
+  specialAbilityType: 6
+  baseSpecialAbilityValue: 0.03
+  maxSpecialAbilityValue: 0.18
+  maxLevel: 10
+  xpCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animatorOverride: {fileID: 0}
+  specialEffect: {fileID: 0}
+  skinIds: []
+  cookTimeMultiplier: 1
+  burnTimeMultiplier: 1
+  scoreMultiplier: 1
+  movementSpeedMultiplier: 1
+  interactionRadiusMultiplier: 1
+  bonusTimeSeconds: 0
+  maxCarryItems: 1
+  specialAbilityValue: 0

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Game/Scenes/Bootstrap.unity
+    guid: aa02bf47e533d4e0f815d630b6cef5bd
+  - enabled: 1
+    path: Assets/_Game/Scenes/Kitchen_Level_1.unity
+    guid: 7b485fd4885bf4ec0a153dc11a760dac
+  - enabled: 1
+    path: Assets/_Game/Scenes/LevelSelect.unity
+    guid: 56063d12ebb424c92a51d4cca2cfcaf0
+  - enabled: 1
+    path: Assets/_Game/Scenes/MainMenu.unity
+    guid: 5f598bf2f35ef4f74bd3496d6ee1184d
+  - enabled: 1
+    path: Assets/_Game/Scenes/Results.unity
+    guid: 1f6488861ad8146059570248c021fcdc
+  m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

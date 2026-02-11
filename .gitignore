@@ -1,0 +1,76 @@
+# Unity generated
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# MemoryCaptures
+/[Mm]emoryCaptures/
+
+# Recordings
+/[Rr]ecordings/
+
+# Asset meta data
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity3D Generated File on Crash Reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Crashlytics
+crashlytics-build.properties
+
+# Packed Addressables
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# TextMeshPro
+/[Aa]ssets/TextMesh Pro/
+
+# IDE
+.vs/
+.vscode/
+*.csproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+.idea/
+*.rider/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Gradle
+/[Aa]ssets/Plugins/Android/mainTemplate.gradle.bak
+
+# Burst debug info
+/IOChef_BurstDebugInformation_DoNotShip/
+
+# Mono crash reports
+mono_crash.*.json
+
+# Solution
+*.slnx
+
+# Build output
+/build.app/

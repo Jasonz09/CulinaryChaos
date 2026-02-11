@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!129 &1
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 22
+  productGUID: a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6
+  AndroidProfiler: 0
+  AndroidFilterTouchesWhenObscured: 0
+  AndroidEnableHWAcceleration: 0
+  productName: IOChef
+  companyName: IOChef
+  defaultCursor: {fileID: 0}
+  cursorHotspot: {x: 0, y: 0}
+  defaultScreenWidth: 1080
+  defaultScreenHeight: 1920
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 600
+  defaultIsNativeResolution: 1
+  macRetinaSupport: 1
+  runInBackground: 1
+  fullscreenMode: 1
+  defaultIsFullScreen: 1
+  d3d11FullscreenMode: 1
+  colorSpace: 1
+  activeInputHandler: 2
+  templatePackageId:
+  templateDefaultScene:
+  useFlipModelSwapchain: 1
+  iPhoneBundleIdentifier: com.iochef.overcookedclone
+  AndroidBundleVersionCode: 1
+  bundleVersion: 0.1.0
+  iPhoneScriptCallOptimization: 0
+  iPhoneDefaultOrientation: 1
+  iPhoneSplashScreen: {fileID: 0}
+  iPhoneHighResSplashScreen: {fileID: 0}
+  allowedAutorotateToPortrait: 1
+  allowedAutorotateToPortraitUpsideDown: 0
+  allowedAutorotateToLandscapeRight: 0
+  allowedAutorotateToLandscapeLeft: 0
+  useOnDemandResources: 0
+  iOSTargetOSVersionString: 13.0
+  AndroidMinSdkVersion: 24
+  AndroidTargetSdkVersion: 0
+  forceSingleInstance: 0
+  resizableWindow: 0
+  usePlayerLog: 1
+  bakeCollisionMeshes: 0
+  forceSRGBBlit: 1
+  virtualRealitySupported: 0
+  enable360StereoCapture: 0
+  protectGraphicsMemory: 0
+  enableFrameTimingStats: 0
+  apiCompatibilityLevel: 6
+  scripting_backend: 1
+  il2cppCompilerConfiguration: 2
+  gcIncremental: 1
+  assemblyVersionValidation: 1
+  managedStrippingLevel: 1
+  scriptingDefineSymbols: {}
+  additionalCompilerArguments: {}
+  platformArchitecture: {}
+  scriptingBackend:
+    Android: 1
+    Standalone: 0
+    iPhone: 1
+  il2cppStacktraceInformation: {}
+  suppressCommonWarnings: 1
+  allowUnsafeCode: 0
+  useDeterministicCompilation: 1
+  enableOpenGLProfilerGPURecorders: 1
+  allowHover: 1
+  insecureHttpOption: 0
