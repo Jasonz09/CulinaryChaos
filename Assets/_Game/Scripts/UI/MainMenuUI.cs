@@ -260,9 +260,8 @@ namespace IOChef.UI
             var root = cgo.GetComponent<RectTransform>();
 
             BuildBackground(root);
-            BuildButtonGroup(root);
-            BuildVersionText(root);
-
+            BuildModernHUD(root);
+            
             settingsPanel = BuildSettingsPanel(root);
             creditsPanel  = BuildCreditsPanel(root);
             shopPanel     = BuildShopPanel(root);
@@ -270,7 +269,6 @@ namespace IOChef.UI
             chestPanel    = BuildChestPanel(root);
             battlePassPanel = BuildBattlePassPanel(root);
             confirmDialog = BuildConfirmDialog(root);
-
         }
 
         // ─── Background ───
@@ -300,154 +298,128 @@ namespace IOChef.UI
 
         }
 
-        // ─── Title ───
-        /// <summary>
-        /// Creates a bold, modern CULINARY CHAOS title with layered depth.
-        /// </summary>
+        // ─── Title ─── (Deprecated)
         private void BuildTitle(RectTransform p)
         {
-            // Title backing plate for readability
-            var plate = MakePanel(p, "TitlePlate", new Color(0f, 0f, 0f, 0.45f));
-            plate.anchorMin = new Vector2(0, 0.84f);
-            plate.anchorMax = new Vector2(1, 1f);
-            plate.offsetMin = plate.offsetMax = Vector2.zero;
-            plate.GetComponent<Image>().raycastTarget = false;
-
-            // Deep shadow layer
-            var sh2 = MakeText(p, "TitleShadow2", "CULINARY CHAOS", 72, new Color(0.20f, 0.06f, 0.01f, 0.7f), FontStyles.Bold);
-            AnchorTop(sh2, new Vector2(900, 100), new Vector2(5, -28));
-            sh2.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
-
-            // Primary shadow
-            var sh = MakeText(p, "TitleShadow", "CULINARY CHAOS", 72, new Color(0.55f, 0.15f, 0.02f), FontStyles.Bold);
-            AnchorTop(sh, new Vector2(900, 100), new Vector2(3, -26));
-            sh.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
-
-            // Main title
-            titleRT = MakeText(p, "Title", "CULINARY CHAOS", 72, new Color(1f, 0.92f, 0.50f), FontStyles.Bold);
-            AnchorTop(titleRT, new Vector2(900, 100), new Vector2(0, -24));
-            titleOrigPos = titleRT.anchoredPosition;
-            var titleTMP = titleRT.GetComponent<TextMeshProUGUI>();
-            titleTMP.alignment = TextAlignmentOptions.Center;
-            titleTMP.characterSpacing = 6;
-
-            var outline = titleRT.gameObject.AddComponent<UnityEngine.UI.Outline>();
-            outline.effectColor = new Color(0.65f, 0.22f, 0.05f);
-            outline.effectDistance = new Vector2(3, -3);
-
-            var outline2 = titleRT.gameObject.AddComponent<UnityEngine.UI.Outline>();
-            outline2.effectColor = new Color(0.40f, 0.10f, 0.02f, 0.5f);
-            outline2.effectDistance = new Vector2(2, -2);
-
-            // Decorative lines beside title (pure ASCII, no emoji)
-            var decoL = MakeText(p, "DecoL", "< < <", 28, new Color(1f, 0.75f, 0.25f, 0.7f), FontStyles.Bold);
-            AnchorTop(decoL, new Vector2(100, 50), new Vector2(-380, -36));
-
-            var decoR = MakeText(p, "DecoR", "> > >", 28, new Color(1f, 0.75f, 0.25f, 0.7f), FontStyles.Bold);
-            AnchorTop(decoR, new Vector2(100, 50), new Vector2(380, -36));
-
-            // Tagline
-            var tagline = MakeText(p, "Tagline", "-- Ready to cook? --", 18,
-                new Color(1, 1, 1, 0.70f), FontStyles.Italic);
-            AnchorTop(tagline, new Vector2(400, 30), new Vector2(0, -120));
         }
 
-
-
-        // ─── Currency Bar ───
-        /// <summary>
-        /// Creates a top-right currency display bar.
-        /// </summary>
+        // ─── Currency Bar ─── (Deprecated)
         private void BuildCurrencyBar(RectTransform p)
         {
-            var bar = MakePanel(p, "CurrencyBar", new Color(0.12f, 0.08f, 0.04f, 0.70f));
-            bar.anchorMin = new Vector2(1f, 1f);
-            bar.anchorMax = new Vector2(1f, 1f);
-            bar.pivot = new Vector2(1f, 1f);
-            bar.sizeDelta = new Vector2(280, 50);
-            bar.anchoredPosition = new Vector2(-16, -12);
-
-            var hl = bar.gameObject.AddComponent<HorizontalLayoutGroup>();
-            hl.spacing = 10;
-            hl.childAlignment = TextAnchor.MiddleCenter;
-            hl.childForceExpandWidth = true;
-            hl.childForceExpandHeight = true;
-            hl.padding = new RectOffset(14, 14, 6, 6);
-
-            // Coin dot + label
-            MakeColorDot(bar, new Color(1f, 0.84f, 0.22f), 18);
-            mainMenuCoinsLabel = MakeText(bar, "CoinVal", "0", 20, Color.white, FontStyles.Bold).GetComponent<TextMeshProUGUI>();
-
-            // Divider
-            MakeText(bar, "Div", "|", 18, new Color(1, 1, 1, 0.3f), FontStyles.Normal);
-
-            // Gem dot + label
-            MakeColorDot(bar, new Color(0.30f, 0.65f, 0.95f), 18);
-            mainMenuGemsLabel = MakeText(bar, "GemVal", "0", 20, Color.white, FontStyles.Bold).GetComponent<TextMeshProUGUI>();
         }
 
-        // ─── Button Group ───
-        /// <summary>
-        /// Valorant-style button group. Angular, high contrast, action-oriented.
-        /// </summary>
-        private void BuildButtonGroup(RectTransform p)
+        // ─── Modern HUD ───
+        private void BuildModernHUD(RectTransform root)
         {
-            // Center container
-            var menuPanel = MakePanel(p, "MenuPanel", Color.clear);
-            menuPanel.anchorMin = new Vector2(0.08f, 0.45f); 
-            menuPanel.anchorMax = new Vector2(0.25f, 0.85f); // Top-Left alignment
-            menuPanel.offsetMin = menuPanel.offsetMax = Vector2.zero;
-            menuPanel.GetComponent<Image>().raycastTarget = false;
-
-            var vlg = menuPanel.gameObject.AddComponent<VerticalLayoutGroup>();
-            vlg.spacing = 10; // Tight spacing
-            vlg.childAlignment = TextAnchor.UpperLeft;
-            vlg.childForceExpandWidth = true;
-            vlg.childForceExpandHeight = false;
-            vlg.childControlWidth = true;
-            vlg.childControlHeight = false;
-
-            // Iconic Valorant Red/Coral
-            Color valRed = new Color(1f, 0.27f, 0.33f); 
-            Color valDark = new Color(0.09f, 0.11f, 0.13f);
+            // 1. Top Navigation Bar - full-width strip at top
+            var topBar = MakePanel(root, "TopNav", new Color(0, 0, 0, 0.65f));
+            topBar.anchorMin = new Vector2(0, 1);
+            topBar.anchorMax = new Vector2(1, 1);
+            topBar.pivot = new Vector2(0.5f, 1);
+            topBar.sizeDelta = new Vector2(0, 70);
+            topBar.anchoredPosition = Vector2.zero;
             
-            // 1. PLAY (Hero Button)
-            // Big, Red, Chamfered
-            MakeModernButton(menuPanel, "    PLAY", "UI/btn_play", valRed, Color.white, 80, 48, OnPlayClicked, true);
+            // Top Bar Layout
+            // Left: Logo
+            var logoArea = MakePanel(topBar, "LogoArea", Color.clear);
+            logoArea.anchorMin = new Vector2(0, 0); logoArea.anchorMax = new Vector2(0.2f, 1);
+            logoArea.offsetMin = new Vector2(30, 0); logoArea.offsetMax = new Vector2(0, 0);
+            var logoTxt = MakeText(logoArea, "LogoTxt", "CULINARY\nCHAOS", 24, new Color(1f, 0.6f, 0.2f), FontStyles.Bold);
+            Stretch(logoTxt);
+            logoTxt.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.MidlineLeft;
 
-            // Spacer
-            var spacer = new GameObject("Spacer", typeof(RectTransform));
-            spacer.transform.SetParent(menuPanel.transform, false);
-            var le = spacer.AddComponent<LayoutElement>();
-            le.minHeight = 25; le.preferredHeight = 25;
+            // Center: Nav Links
+            var navArea = MakePanel(topBar, "NavArea", Color.clear);
+            navArea.anchorMin = new Vector2(0.2f, 0); navArea.anchorMax = new Vector2(0.75f, 1);
+            navArea.offsetMin = navArea.offsetMax = Vector2.zero;
+            var navHlg = navArea.gameObject.AddComponent<HorizontalLayoutGroup>();
+            navHlg.spacing = 40; navHlg.childAlignment = TextAnchor.MiddleCenter; 
+            navHlg.childControlWidth = false; navHlg.childForceExpandWidth = false;
 
-            // 2. Secondary Menu Options (Dark tiles)
-            // Recipe
-            MakeModernButton(menuPanel, "RECIPE BOOK", "UI/btn_menu", valDark, valRed, 50, 22, OnRecipeBookClicked, false);
+            // Nav Buttons
+            MakeTextButton(navArea, "HEROES", 20, Color.white, OnHeroesClicked);
+            MakeTextButton(navArea, "PETS", 20, COL_DISABLED_TXT, () => Debug.Log("Pets not implemented"));
+            MakeTextButton(navArea, "RECIPES", 20, Color.white, OnRecipeBookClicked);
+            MakeTextButton(navArea, "SHOP", 20, Color.white, OnShopClicked);
+            MakeTextButton(navArea, "SEASON PASS", 20, Color.white, OnBattlePassClicked);
+
+            // Right: Player Profile & Currency
+            var rightArea = MakePanel(topBar, "RightProfile", Color.clear);
+            rightArea.anchorMin = new Vector2(0.75f, 0f); rightArea.anchorMax = new Vector2(1f, 1f);
+            rightArea.offsetMin = rightArea.offsetMax = Vector2.zero;
             
-            // Store
-            MakeModernButton(menuPanel, "STORE", "UI/btn_shop", valDark, valRed, 50, 22, OnShopClicked, false);
-
-            // Options
-            MakeModernButton(menuPanel, "OPTIONS", "UI/btn_settings", valDark, valRed, 50, 22, OnSettingsClicked, false);
-
-            // 3. Sub-menu / Footer items (Heroes, Pass, etc)
-            // We can place these in a row at the bottom right, outside the main stack
-            var extras = MakePanel(p, "Extras", Color.clear);
-            extras.anchorMin = new Vector2(0.95f, 0.05f);
-            extras.anchorMax = new Vector2(0.95f, 0.05f);
-            extras.pivot = new Vector2(1f, 0f);
-            extras.sizeDelta = new Vector2(600, 60);
+            var curHlg = rightArea.gameObject.AddComponent<HorizontalLayoutGroup>();
+            curHlg.spacing = 15; curHlg.childAlignment = TextAnchor.MiddleRight; curHlg.padding = new RectOffset(0, 30, 0, 0);
+            curHlg.childControlWidth = false; curHlg.childForceExpandWidth = false;
             
-            var ehlg = extras.gameObject.AddComponent<HorizontalLayoutGroup>();
-            ehlg.spacing = 15;
-            ehlg.childAlignment = TextAnchor.MiddleRight;
-            ehlg.childForceExpandWidth = false;
-            ehlg.childControlWidth = true;
+            // Profile Name
+            MakeText(rightArea, "UserName", "CHEF", 18, Color.white, FontStyles.Bold);
             
-            MakeModernPill(extras, "AGENTS", "UI/icon_gems", valDark, OnHeroesClicked);
-            MakeModernPill(extras, "VAULT", "UI/icon_credits", valDark, OnChestsClicked);
-            MakeModernPill(extras, "BATTLEPASS", "UI/star_filled", valDark, OnSeasonPassClicked);
+            // Coins
+            var coinP = MakePanel(rightArea, "Coins", Color.clear);
+            AddLE(coinP.gameObject, 80, -1);
+            var cleft = coinP.gameObject.AddComponent<HorizontalLayoutGroup>();
+            cleft.spacing = 5; cleft.childControlWidth = true; cleft.childForceExpandWidth = false; cleft.childAlignment = TextAnchor.MiddleLeft;
+            MakeColorDot(coinP, new Color(1f, 0.84f, 0.22f), 14);
+            mainMenuCoinsLabel = MakeText(coinP, "Val", "0", 18, Color.white, FontStyles.Bold).GetComponent<TextMeshProUGUI>();
+
+            // Gems
+            var gemP = MakePanel(rightArea, "Gems", Color.clear);
+            AddLE(gemP.gameObject, 80, -1);
+            var gleft = gemP.gameObject.AddComponent<HorizontalLayoutGroup>();
+            gleft.spacing = 5; gleft.childControlWidth = true; gleft.childForceExpandWidth = false; gleft.childAlignment = TextAnchor.MiddleLeft;
+            MakeColorDot(gemP, new Color(0.30f, 0.65f, 0.95f), 14);
+            mainMenuGemsLabel = MakeText(gemP, "Val", "0", 18, Color.white, FontStyles.Bold).GetComponent<TextMeshProUGUI>();
+
+            // Settings Icon Btn
+            MakeModernButton(rightArea, "Options", "", Color.clear, Color.clear, 24, 40, OnSettingsClicked, false); 
+            var optBtn = rightArea.GetChild(rightArea.childCount - 1).GetComponentInChildren<TextMeshProUGUI>();
+            optBtn.text = "O"; // Gear emoji or char? Using 'O' for now.
+
+            // 2. Left Sidebar (Season Pass / Featured)
+            var leftBar = MakePanel(root, "LeftSidebar", Color.clear);
+            leftBar.anchorMin = new Vector2(0, 0.15f);
+            leftBar.anchorMax = new Vector2(0.25f, 0.75f);
+            leftBar.offsetMin = new Vector2(40, 0); leftBar.offsetMax = new Vector2(0, 0);
+            
+            var lblg = leftBar.gameObject.AddComponent<VerticalLayoutGroup>();
+            lblg.spacing = 20; lblg.childAlignment = TextAnchor.UpperLeft; lblg.childControlHeight = false; lblg.childForceExpandHeight = false;
+
+            // Season Pass Card
+            var passCard = MakePanel(leftBar, "SeasonPassCard", new Color(0.1f, 0.12f, 0.15f, 0.85f));
+            AddLE(passCard.gameObject, -1, 110);
+            var passLayout = passCard.gameObject.AddComponent<VerticalLayoutGroup>();
+            passLayout.padding = new RectOffset(20,20,15,15); passLayout.spacing = 5;
+            passLayout.childControlHeight = false; passLayout.childForceExpandHeight = false;
+            MakeText(passCard, "Title", "SEASON PASS", 22, Color.white, FontStyles.Bold).GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Left;
+            MakeText(passCard, "Progress", "Progress - 1/4", 14, Color.gray, FontStyles.Normal).GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Left;
+            // Progress Bar
+            var pBar = MakePanel(passCard, "Bar", Color.black); 
+            AddLE(pBar.gameObject, -1, 8);
+            var fill = MakePanel(pBar, "Fill", new Color(0.95f, 0.38f, 0.10f));
+            fill.anchorMin = Vector2.zero; fill.anchorMax = new Vector2(0.3f, 1); fill.offsetMin = fill.offsetMax = Vector2.zero;
+
+            // Featured Item
+            var featCard = MakePanel(leftBar, "FeaturedCard", new Color(0.1f, 0.12f, 0.15f, 0.85f));
+            AddLE(featCard.gameObject, -1, 180);
+            var featLayout = featCard.gameObject.AddComponent<VerticalLayoutGroup>();
+            featLayout.padding = new RectOffset(20,20,15,15);
+            featLayout.childControlHeight = false; featLayout.childForceExpandHeight = false;
+            MakeText(featCard, "Title", "FEATURED SHOP ITEM", 18, Color.white, FontStyles.Bold);
+            // Placeholder visuals for item
+            var itemPlaceholder = MakePanel(featCard, "ItemIcon", new Color(0,0,0,0.3f));
+            var itemLE = itemPlaceholder.gameObject.AddComponent<LayoutElement>();
+            itemLE.flexibleHeight = 1; itemLE.preferredHeight = 100;
+
+            // 3. Play Button (Bottom Right)
+            var playArea = MakePanel(root, "PlayArea", Color.clear);
+            playArea.anchorMin = new Vector2(1, 0); playArea.anchorMax = new Vector2(1, 0);
+            playArea.pivot = new Vector2(1, 0);
+            playArea.anchoredPosition = new Vector2(-50, 50);
+            playArea.sizeDelta = new Vector2(320, 100);
+
+            // Orange Hex button
+            MakeModernButton(playArea, "PLAY", "UI/btn_play", new Color(1.0f, 0.4f, 0.0f), new Color(1.0f, 0.3f, 0.0f), 42, 80, OnPlayClicked, true);
         }
 
         // ─── Recipe Book Click Handler ───
@@ -631,18 +603,11 @@ namespace IOChef.UI
 
         // ─── Version Text ───
         /// <summary>
-        /// Creates the version number text at the bottom.
+        /// Creates the version number text. (Deprecated, now handled in BuildButtonGroup)
         /// </summary>
-        /// <param name="p">Parent RectTransform for the version text.</param>
         private void BuildVersionText(RectTransform p)
         {
-            var v = MakeText(p, "Ver", $"v{Application.version}", 16,
-                new Color(1, 1, 1, 0.40f), FontStyles.Normal);
-            v.anchorMin = new Vector2(1, 0); v.anchorMax = new Vector2(1, 0);
-            v.pivot = new Vector2(1, 0);
-            v.anchoredPosition = new Vector2(-14, 12);
-            v.sizeDelta = new Vector2(180, 26);
-            v.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.BottomRight;
+            // Disabled to prevent duplicate overlapping text
         }
 
         // ═══════════════════════════════════════════════════════
@@ -654,6 +619,16 @@ namespace IOChef.UI
         /// </summary>
         private void OnPlayClicked()
         { if (GameManager.Instance != null) GameManager.Instance.LoadLevelSelect(); }
+
+        private void ShowPanel(GameObject panel)
+        {
+            if (panel != null) panel.SetActive(true);
+        }
+
+        private void OnBattlePassClicked()
+        {
+            if (battlePassPanel != null) battlePassPanel.SetActive(true);
+        }
 
         /// <summary>
         /// Toggles the settings panel visibility.
@@ -791,787 +766,18 @@ namespace IOChef.UI
         ///    Apple ID linked. User can overwrite or cancel.
         /// 4. Other errors — shown as-is with a dismiss button.
         /// </summary>
-        private void AttemptLinkApple(string identityToken, bool forceLink = false)
+        private void AttemptLinkApple(string identityToken)
         {
-            if (linkAppleLabel != null) linkAppleLabel.text = "LINKING...";
-
-            PlayFabManager.Instance?.LinkAppleAccount(identityToken, forceLink,
-                onSuccess: () =>
-                {
-                    Debug.Log("[MainMenuUI] Apple account linked successfully");
-                    if (linkAppleLabel != null) linkAppleLabel.text = "APPLE LINKED";
-                    ShowConfirmDialog("Account Linked",
-                        "Your Apple ID has been linked to this account.\n\n" +
-                        "You can now recover your progress by signing in with Apple on any device.",
-                        "OK", COL_PLAY, null);
-                },
-                onError: err =>
-                {
-                    string errorName = PlayFabManager.GetErrorName(err);
-
-                    if (errorName == PlayFabManager.ERR_LINKED_ACCOUNT_ALREADY_CLAIMED)
-                    {
-                        // This Apple ID belongs to another account
-                        _pendingAppleToken = identityToken;
-                        ShowConfirmDialog(
-                            "Apple ID Already In Use",
-                            "This Apple ID is already linked to a different account.\n\n" +
-                            "If you continue, the Apple ID will be moved to YOUR current " +
-                            "account. The other account will lose its Apple Sign-In link " +
-                            "and may become unrecoverable.\n\n" +
-                            "Are you sure you want to steal this Apple ID link?",
-                            "LINK ANYWAY", new Color(0.85f, 0.25f, 0.2f),
-                            () => AttemptLinkApple(_pendingAppleToken, forceLink: true),
-                            "CANCEL", COL_BTN, () =>
-                            {
-                                if (linkAppleLabel != null) linkAppleLabel.text = "LINK APPLE ACCOUNT";
-                            });
-                    }
-                    else if (errorName == PlayFabManager.ERR_ACCOUNT_ALREADY_LINKED)
-                    {
-                        // This PlayFab account already has an Apple ID
-                        _pendingAppleToken = identityToken;
-                        ShowConfirmDialog(
-                            "Already Linked",
-                            "This game account already has an Apple ID linked.\n\n" +
-                            "Linking a new Apple ID will replace the existing one. " +
-                            "You will no longer be able to recover this account " +
-                            "with the old Apple ID.\n\n" +
-                            "Do you want to replace it?",
-                            "REPLACE", new Color(0.85f, 0.55f, 0.1f),
-                            () => AttemptLinkApple(_pendingAppleToken, forceLink: true),
-                            "KEEP CURRENT", COL_BTN, () =>
-                            {
-                                if (linkAppleLabel != null) linkAppleLabel.text = "APPLE LINKED";
-                            });
-                    }
-                    else
-                    {
-                        // Unknown/network error
-                        if (linkAppleLabel != null) linkAppleLabel.text = "LINK APPLE ACCOUNT";
-                        ShowConfirmDialog("Link Failed",
-                            $"Could not link Apple account.\n\n{err}",
-                            "OK", COL_BTN, null);
-                    }
-                });
+            Debug.Log("[MainMenuUI] AttemptLinkApple called (placeholder)");
+            ShowConfirmDialog("Link Apple (Placeholder)", "Apple linking is not implemented in this build.", "OK", COL_BTN, null);
         }
 
-        /// <summary>
-        /// Attempts to link a Google auth code. On conflict, shows
-        /// a confirmation dialog explaining what will happen.
-        ///
-        /// Scenarios handled:
-        /// 1. Success — Google account linked to current account.
-        /// 2. LinkedAccountAlreadyClaimed — Google account is already linked to a
-        ///    DIFFERENT PlayFab account. User can force-link or cancel.
-        /// 3. AccountAlreadyLinked — Current PlayFab account already has a
-        ///    Google account linked. User can overwrite or cancel.
-        /// 4. Other errors — shown as-is with a dismiss button.
-        /// </summary>
-        private void AttemptLinkGoogle(string serverAuthCode, bool forceLink = false)
+        private void AttemptLinkGoogle(string authCode)
         {
-            if (linkGoogleLabel != null) linkGoogleLabel.text = "LINKING...";
-
-            PlayFabManager.Instance?.LinkGoogleAccount(serverAuthCode, forceLink,
-                onSuccess: () =>
-                {
-                    Debug.Log("[MainMenuUI] Google account linked successfully");
-                    if (linkGoogleLabel != null) linkGoogleLabel.text = "GOOGLE LINKED";
-                    ShowConfirmDialog("Account Linked",
-                        "Your Google account has been linked to this account.\n\n" +
-                        "You can now recover your progress by signing in with Google on any device.",
-                        "OK", COL_PLAY, null);
-                },
-                onError: err =>
-                {
-                    string errorName = PlayFabManager.GetErrorName(err);
-
-                    if (errorName == PlayFabManager.ERR_LINKED_ACCOUNT_ALREADY_CLAIMED)
-                    {
-                        // This Google account belongs to another account
-                        _pendingGoogleAuthCode = serverAuthCode;
-                        ShowConfirmDialog(
-                            "Google Account Already In Use",
-                            "This Google account is already linked to a different account.\n\n" +
-                            "If you continue, the Google link will be moved to YOUR current " +
-                            "account. The other account will lose its Google Sign-In link " +
-                            "and may become unrecoverable.\n\n" +
-                            "Are you sure you want to steal this Google link?",
-                            "LINK ANYWAY", new Color(0.85f, 0.25f, 0.2f),
-                            () => AttemptLinkGoogle(_pendingGoogleAuthCode, forceLink: true),
-                            "CANCEL", COL_BTN, () =>
-                            {
-                                if (linkGoogleLabel != null) linkGoogleLabel.text = "LINK GOOGLE ACCOUNT";
-                            });
-                    }
-                    else if (errorName == PlayFabManager.ERR_ACCOUNT_ALREADY_LINKED)
-                    {
-                        // This PlayFab account already has a Google account
-                        _pendingGoogleAuthCode = serverAuthCode;
-                        ShowConfirmDialog(
-                            "Already Linked",
-                            "This game account already has a Google account linked.\n\n" +
-                            "Linking a new Google account will replace the existing one. " +
-                            "You will no longer be able to recover this account " +
-                            "with the old Google account.\n\n" +
-                            "Do you want to replace it?",
-                            "REPLACE", new Color(0.85f, 0.55f, 0.1f),
-                            () => AttemptLinkGoogle(_pendingGoogleAuthCode, forceLink: true),
-                            "KEEP CURRENT", COL_BTN, () =>
-                            {
-                                if (linkGoogleLabel != null) linkGoogleLabel.text = "GOOGLE LINKED";
-                            });
-                    }
-                    else
-                    {
-                        // Unknown/network error
-                        if (linkGoogleLabel != null) linkGoogleLabel.text = "LINK GOOGLE ACCOUNT";
-                        ShowConfirmDialog("Link Failed",
-                            $"Could not link Google account.\n\n{err}",
-                            "OK", COL_BTN, null);
-                    }
-                });
+            Debug.Log("[MainMenuUI] AttemptLinkGoogle called (placeholder)");
+            ShowConfirmDialog("Link Google (Placeholder)", "Google linking is not implemented in this build.", "OK", COL_BTN, null);
         }
 
-        // ═══════════════════════════════════════════════════════
-        //  REFRESH
-        // ═══════════════════════════════════════════════════════
-
-        // RefreshShopPanel moved to MainMenuUI.Shop.cs
-
-        // BuildHeroesPanel and RefreshHeroesPanel moved to MainMenuUI.Heroes.cs
-
-        // ═══════════════════════════════════════════════════════
-        //  ANIMATION
-        // ═══════════════════════════════════════════════════════
-
-
-        // ═══════════════════════════════════════════════════════
-        //  FACTORY HELPERS
-        // ═══════════════════════════════════════════════════════
-
-        /// <summary>
-        /// Creates a small colored circle — used for currency icons instead of emoji.
-        /// </summary>
-        private void MakeColorDot(RectTransform parent, Color color, int size)
-        {
-            var go = new GameObject("Dot", typeof(RectTransform), typeof(Image));
-            go.transform.SetParent(parent, false);
-            var img = go.GetComponent<Image>();
-            img.color = color;
-            img.raycastTarget = false;
-            var le = go.AddComponent<LayoutElement>();
-            le.preferredWidth = size;
-            le.preferredHeight = size;
-            le.flexibleWidth = 0;
-        }
-
-        /// <summary>
-        /// Creates an EventSystem if none exists in the scene.
-        /// </summary>
-        private void EnsureEventSystem()
-        {
-            if (FindAnyObjectByType<EventSystem>() == null)
-            {
-                var g = new GameObject("EventSystem");
-                g.AddComponent<EventSystem>();
-                g.AddComponent<StandaloneInputModule>();
-            }
-        }
-
-        /// <summary>
-        /// Creates a UI panel with an Image component.
-        /// </summary>
-        /// <param name="parent">Parent RectTransform to attach the panel to.</param>
-        /// <param name="name">Name of the panel GameObject.</param>
-        /// <param name="c">Background color of the panel.</param>
-        /// <returns>The RectTransform of the created panel.</returns>
-        private RectTransform MakePanel(RectTransform parent, string name, Color c)
-        {
-            var go = new GameObject(name, typeof(RectTransform), typeof(Image));
-            go.transform.SetParent(parent, false);
-            go.GetComponent<Image>().color = c;
-            return go.GetComponent<RectTransform>();
-        }
-
-        /// <summary>
-        /// Creates a TextMeshProUGUI text element.
-        /// </summary>
-        /// <param name="parent">Parent RectTransform to attach the text to.</param>
-        /// <param name="name">Name of the text GameObject.</param>
-        /// <param name="text">Text content to display.</param>
-        /// <param name="size">Font size.</param>
-        /// <param name="c">Text color.</param>
-        /// <param name="style">Font style (bold, italic, etc.).</param>
-        /// <returns>The RectTransform of the created text element.</returns>
-        private RectTransform MakeText(RectTransform parent, string name, string text,
-            int size, Color c, FontStyles style)
-        {
-            var go = new GameObject(name, typeof(RectTransform), typeof(TextMeshProUGUI));
-            go.transform.SetParent(parent, false);
-            var t = go.GetComponent<TextMeshProUGUI>();
-            t.text = text; t.fontSize = size; t.color = c;
-            t.fontStyle = style; t.alignment = TextAlignmentOptions.Center;
-            t.enableWordWrapping = true;
-            return go.GetComponent<RectTransform>();
-        }
-
-        /// <summary>
-        /// Adds a text element with a layout element for vertical layouts.
-        /// </summary>
-        /// <param name="parent">Parent RectTransform to attach the text to.</param>
-        /// <param name="name">Name of the text GameObject.</param>
-        /// <param name="text">Text content to display.</param>
-        /// <param name="size">Font size.</param>
-        /// <param name="c">Text color.</param>
-        /// <param name="style">Font style (bold, italic, etc.).</param>
-        /// <param name="prefH">Preferred height for the layout element.</param>
-        private void AddLayoutText(RectTransform parent, string name, string text,
-            int size, Color c, FontStyles style, float prefH)
-        {
-            var rt = MakeText(parent, name, text, size, c, style);
-            AddLE(rt.gameObject, prefH);
-        }
-
-        /// <summary>
-        /// Adds a LayoutElement with a preferred height to a GameObject.
-        /// </summary>
-        /// <param name="go">The GameObject to add the LayoutElement to.</param>
-        /// <param name="prefH">Preferred height for the layout element.</param>
-        private static void AddLE(GameObject go, float prefH)
-        {
-            var le = go.AddComponent<LayoutElement>();
-            le.preferredHeight = prefH;
-            le.flexibleHeight  = 0;
-        }
-
-        private static void AddLE(GameObject go, float prefH, float prefW)
-        {
-            var le = go.AddComponent<LayoutElement>();
-            le.preferredHeight = prefH;
-            le.flexibleHeight  = 0;
-            if (prefW > 0) le.preferredWidth = prefW;
-        }
-
-        // ─── Currency Icon Helpers ───
-
-        private RectTransform MakeCurrencyIcon(RectTransform parent, string currencyType, int size = 22)
-        {
-            Color iconColor = currencyType switch
-            {
-                "coins"  => new Color(1f, 0.84f, 0.22f),
-                "gems"   => new Color(0.20f, 0.55f, 0.85f),
-                "tokens" => new Color(0.30f, 0.75f, 0.30f),
-                _        => new Color(0.70f, 0.70f, 0.70f),
-            };
-
-            var iconGO = new GameObject($"Icon_{currencyType}", typeof(RectTransform), typeof(Image));
-            iconGO.transform.SetParent(parent, false);
-            var img = iconGO.GetComponent<Image>();
-            img.color = iconColor;
-            img.raycastTarget = false;
-            var rt = iconGO.GetComponent<RectTransform>();
-            rt.sizeDelta = new Vector2(size, size);
-
-            var le = iconGO.AddComponent<LayoutElement>();
-            le.preferredWidth = size;
-            le.preferredHeight = size;
-            le.flexibleWidth = 0;
-            return rt;
-        }
-
-        private TextMeshProUGUI MakeCurrencyLabel(RectTransform parent, string name,
-            string currencyType, string text, int fontSize, Color textColor, float prefH)
-        {
-            var row = MakePanel(parent, name, Color.clear);
-            AddLE(row.gameObject, prefH);
-            var hl = row.gameObject.AddComponent<HorizontalLayoutGroup>();
-            hl.spacing = 6;
-            hl.childAlignment = TextAnchor.MiddleCenter;
-            hl.childForceExpandWidth = false;
-            hl.childForceExpandHeight = false;
-            hl.childControlWidth = true;
-            hl.childControlHeight = true;
-
-            MakeCurrencyIcon(row, currencyType);
-
-            var txtRT = MakeText(row, $"{name}Txt", text, fontSize, textColor, FontStyles.Bold);
-            var txtLE = txtRT.gameObject.AddComponent<LayoutElement>();
-            txtLE.flexibleWidth = 1;
-            txtLE.preferredHeight = prefH;
-            return txtRT.GetComponent<TextMeshProUGUI>();
-        }
-
-        // ─── Purchase Feedback Animation ───
-
-        private void ShowPurchaseFeedback(RectTransform parent, string text, Color color)
-        {
-            StartCoroutine(PurchaseFeedbackCoroutine(parent, text, color));
-        }
-
-        private IEnumerator PurchaseFeedbackCoroutine(RectTransform parent, string text, Color color)
-        {
-            var go = new GameObject("Feedback", typeof(RectTransform), typeof(TextMeshProUGUI));
-            go.transform.SetParent(parent, false);
-            var tmp = go.GetComponent<TextMeshProUGUI>();
-            tmp.text = text;
-            tmp.fontSize = 28;
-            tmp.color = color;
-            tmp.fontStyle = FontStyles.Bold;
-            tmp.alignment = TextAlignmentOptions.Center;
-            tmp.raycastTarget = false;
-            var rt = go.GetComponent<RectTransform>();
-            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
-            rt.pivot = new Vector2(0.5f, 0.5f);
-            rt.sizeDelta = new Vector2(400, 50);
-            Vector2 startPos = Vector2.zero;
-            rt.anchoredPosition = startPos;
-
-            float duration = 1f;
-            float timer = 0f;
-            while (timer < duration)
-            {
-                float t = timer / duration;
-                rt.anchoredPosition = startPos + new Vector2(0, t * 100f);
-                tmp.color = new Color(color.r, color.g, color.b, 1f - t);
-                timer += Time.unscaledDeltaTime;
-                yield return null;
-            }
-            Destroy(go);
-        }
-
-        /// <summary>
-        /// Simple button: Image = face color, shadow strip child behind label.
-        /// No child Images blocking raycasts. No color tinting.
-        /// </summary>
-        /// <param name="parent">Parent RectTransform.</param>
-        /// <param name="label">Button label text.</param>
-        /// <param name="face">Face color.</param>
-        /// <param name="shadow">Shadow strip color.</param>
-        /// <param name="txt">Text color.</param>
-        /// <param name="size">Font size.</param>
-        /// <param name="h">Button height.</param>
-        /// <param name="onClick">Click callback.</param>
-        private void MakeChunkyButton(RectTransform parent, string label, Color face, Color shadow,
-            Color txt, int size, int h, UnityEngine.Events.UnityAction onClick)
-        {
-            int borderH = Mathf.Max(5, h / 10);
-
-            // Button GO — Image IS the face color
-            var go = new GameObject($"Btn_{label}", typeof(RectTransform), typeof(Image), typeof(Button));
-            go.transform.SetParent(parent, false);
-            AddLE(go, h);
-
-            var img = go.GetComponent<Image>();
-            img.color = face;  // green, yellow, red etc — displayed directly
-
-            // Bottom shadow strip (non-interactive, behind label)
-            var shGO = new GameObject("Shadow", typeof(RectTransform), typeof(Image));
-            shGO.transform.SetParent(go.transform, false);
-            var shImg = shGO.GetComponent<Image>();
-            shImg.color = shadow;
-            shImg.raycastTarget = false;  // clicks pass through to button
-            var shRT = shGO.GetComponent<RectTransform>();
-            shRT.anchorMin = new Vector2(0, 0);
-            shRT.anchorMax = new Vector2(1, 0);
-            shRT.pivot = new Vector2(0.5f, 0);
-            shRT.offsetMin = Vector2.zero;
-            shRT.offsetMax = Vector2.zero;
-            shRT.sizeDelta = new Vector2(0, borderH);
-
-            // Button setup — NO color tinting
-            var btn = go.GetComponent<Button>();
-            btn.transition = Selectable.Transition.None;
-            btn.targetGraphic = img;
-            if (onClick != null) btn.onClick.AddListener(onClick);
-
-            // Label
-            var lbl = new GameObject("Lbl", typeof(RectTransform), typeof(TextMeshProUGUI));
-            lbl.transform.SetParent(go.transform, false);
-            var tmp = lbl.GetComponent<TextMeshProUGUI>();
-            tmp.text = label; tmp.fontSize = size; tmp.color = txt;
-            tmp.fontStyle = FontStyles.Bold; tmp.alignment = TextAlignmentOptions.Center;
-            tmp.raycastTarget = false;  // clicks pass through to button
-            var lblRT = lbl.GetComponent<RectTransform>();
-            Stretch(lblRT);
-            lblRT.offsetMin = new Vector2(8, borderH);
-            lblRT.offsetMax = new Vector2(-8, -2);
-
-            go.AddComponent<ButtonBounceEffect>();
-        }
-
-        private TextMeshProUGUI MakeChunkyButtonWithLabel(RectTransform parent, string label, Color face, Color shadow,
-            Color txt, int size, int h, UnityEngine.Events.UnityAction onClick)
-        {
-            MakeChunkyButton(parent, label, face, shadow, txt, size, h, onClick);
-            // Return label TMP from the button we just created (last child of parent)
-            var btnGO = parent.GetChild(parent.childCount - 1);
-            return btnGO.Find("Lbl")?.GetComponent<TextMeshProUGUI>();
-        }
-
-        /// <summary>
-        /// Disabled button with badge. Same flat structure — no child Face panel.
-        /// </summary>
-        /// <param name="parent">Parent RectTransform.</param>
-        /// <param name="label">Button label text.</param>
-        /// <param name="badge">Badge text.</param>
-        /// <param name="face">Face color.</param>
-        /// <param name="shadow">Shadow strip color.</param>
-        /// <param name="txt">Text color.</param>
-        /// <param name="size">Font size.</param>
-        /// <param name="h">Button height.</param>
-        private void MakeDisabledBadgeButton(RectTransform parent, string label, string badge,
-            Color face, Color shadow, Color txt, int size, int h)
-        {
-            int borderH = Mathf.Max(4, h / 14);
-
-            var go = new GameObject($"Btn_{label}_Off", typeof(RectTransform), typeof(Image), typeof(Button));
-            go.transform.SetParent(parent, false);
-            AddLE(go, h);
-
-            var img = go.GetComponent<Image>();
-            img.color = face;  // grey for disabled
-
-            // Bottom shadow strip
-            var shGO = new GameObject("Shadow", typeof(RectTransform), typeof(Image));
-            shGO.transform.SetParent(go.transform, false);
-            var shImg = shGO.GetComponent<Image>();
-            shImg.color = shadow;
-            shImg.raycastTarget = false;
-            var shRT = shGO.GetComponent<RectTransform>();
-            shRT.anchorMin = new Vector2(0, 0);
-            shRT.anchorMax = new Vector2(1, 0);
-            shRT.pivot = new Vector2(0.5f, 0);
-            shRT.offsetMin = Vector2.zero;
-            shRT.offsetMax = Vector2.zero;
-            shRT.sizeDelta = new Vector2(0, borderH);
-
-            // Disabled, no tinting
-            var btn = go.GetComponent<Button>();
-            btn.transition = Selectable.Transition.None;
-            btn.interactable = false;
-            btn.targetGraphic = img;
-
-            // Label
-            var lbl = new GameObject("Lbl", typeof(RectTransform), typeof(TextMeshProUGUI));
-            lbl.transform.SetParent(go.transform, false);
-            var tmp = lbl.GetComponent<TextMeshProUGUI>();
-            tmp.text = label; tmp.fontSize = size; tmp.color = txt;
-            tmp.fontStyle = FontStyles.Bold; tmp.alignment = TextAlignmentOptions.Center;
-            tmp.raycastTarget = false;
-            var lblRT = lbl.GetComponent<RectTransform>();
-            Stretch(lblRT);
-            lblRT.offsetMin = new Vector2(8, borderH);
-            lblRT.offsetMax = new Vector2(-8, -2);
-
-            // Badge (top-right)
-            var badgeGO = new GameObject("Badge", typeof(RectTransform), typeof(Image));
-            badgeGO.transform.SetParent(go.transform, false);
-            var bImg = badgeGO.GetComponent<Image>();
-            bImg.color = COL_BADGE;
-            bImg.raycastTarget = false;
-            var brt = badgeGO.GetComponent<RectTransform>();
-            brt.anchorMin = brt.anchorMax = new Vector2(1, 1);
-            brt.pivot = new Vector2(1, 1);
-            brt.anchoredPosition = new Vector2(10, 10);
-            brt.sizeDelta = new Vector2(160, 26);
-
-            var btx = new GameObject("BTx", typeof(RectTransform), typeof(TextMeshProUGUI));
-            btx.transform.SetParent(badgeGO.transform, false);
-            var bt = btx.GetComponent<TextMeshProUGUI>();
-            bt.text = badge; bt.fontSize = 13; bt.color = Color.white;
-            bt.fontStyle = FontStyles.Bold; bt.alignment = TextAlignmentOptions.Center;
-            bt.raycastTarget = false;
-            Stretch(btx.GetComponent<RectTransform>());
-        }
-
-        /// <summary>
-        /// Creates a styled slider control.
-        /// </summary>
-        /// <param name="parent">Parent RectTransform to attach the slider to.</param>
-        /// <param name="name">Name of the slider GameObject.</param>
-        /// <param name="val">Initial value of the slider (0-1).</param>
-        /// <returns>The created Slider component.</returns>
-        private Slider MakeSlider(RectTransform parent, string name, float val)
-        {
-            var go = new GameObject(name, typeof(RectTransform), typeof(Slider));
-            go.transform.SetParent(parent, false);
-            AddLE(go, 42);
-
-            var bg = new GameObject("Bg", typeof(RectTransform), typeof(Image));
-            bg.transform.SetParent(go.transform, false);
-            bg.GetComponent<Image>().color = new Color(0.68f, 0.62f, 0.52f);
-            var bgrt = bg.GetComponent<RectTransform>(); Stretch(bgrt);
-            bgrt.offsetMin = new Vector2(8, 15); bgrt.offsetMax = new Vector2(-8, -15);
-
-            var fa = new GameObject("FA", typeof(RectTransform));
-            fa.transform.SetParent(go.transform, false);
-            var fart = fa.GetComponent<RectTransform>(); Stretch(fart);
-            fart.offsetMin = new Vector2(8, 15); fart.offsetMax = new Vector2(-8, -15);
-
-            var fill = new GameObject("Fill", typeof(RectTransform), typeof(Image));
-            fill.transform.SetParent(fa.transform, false);
-            fill.GetComponent<Image>().color = COL_PLAY;
-            var frt = fill.GetComponent<RectTransform>(); Stretch(frt);
-
-            var ha = new GameObject("HA", typeof(RectTransform));
-            ha.transform.SetParent(go.transform, false);
-            var hart = ha.GetComponent<RectTransform>(); Stretch(hart);
-            hart.offsetMin = new Vector2(8, 0); hart.offsetMax = new Vector2(-8, 0);
-
-            var handle = new GameObject("H", typeof(RectTransform), typeof(Image));
-            handle.transform.SetParent(ha.transform, false);
-            handle.GetComponent<Image>().color = Color.white;
-            handle.GetComponent<RectTransform>().sizeDelta = new Vector2(26, 26);
-
-            var s = go.GetComponent<Slider>();
-            s.fillRect = frt; s.handleRect = handle.GetComponent<RectTransform>();
-            s.minValue = 0; s.maxValue = 1; s.value = val;
-            return s;
-        }
-
-        // ─── Modern Button System (Valorant Style) ───
-
-        private Dictionary<string, Sprite> _valorantCache = new Dictionary<string, Sprite>();
-
-        /// <summary>
-        /// Generates a "Valorant-style" angular sprite with chamfered corners.
-        /// </summary>
-        private Sprite GenerateValorantSprite(int w, int h, Color color, Color borderCol, bool isHero)
-        {
-             string key = $"Val_{w}x{h}_{color}_{borderCol}_{isHero}";
-             if (_valorantCache.ContainsKey(key) && _valorantCache[key] != null) return _valorantCache[key];
-
-             var tex = new Texture2D(w, h, TextureFormat.RGBA32, false);
-             tex.filterMode = FilterMode.Point; 
-             tex.wrapMode = TextureWrapMode.Clamp;
-
-             Color[] pixels = new Color[w * h];
-             // Hero buttons have larger chamfers
-             int chamfer = isHero ? 24 : 12; 
-             int border = 2; // Thin sleek border
-
-             for (int y = 0; y < h; y++)
-             {
-                 for (int x = 0; x < w; x++)
-                 {
-                     // Texture coordinates: (0,0) is bottom-left
-                     // Top-Left corner: x near 0, y near h-1
-                     // Bottom-Right corner: x near w-1, y near 0
-                     
-                     // 1. Cut Corners Logic
-                     bool cut = false;
-                     // Top-Left Cut: y > x + (h - chamfer) => x + (h-y) < chamfer
-                     if (x + (h - y - 1) < chamfer) cut = true;
-                     // Bottom-Right Cut: y < x - (w - chamfer) => (w-x) + y < chamfer
-                     if ((w - x - 1) + y < chamfer) cut = true;
-
-                     if (cut)
-                     {
-                         pixels[y * w + x] = Color.clear;
-                         continue;
-                     }
-
-                     // 2. Border Logic
-                     bool isBorder = false;
-                     // Outer bounds
-                     if (x < border || x >= w - border || y < border || y >= h - border) isBorder = true;
-                     // Chamfer edges
-                     if (x + (h - y - 1) < chamfer + border) isBorder = true;
-                     if ((w - x - 1) + y < chamfer + border) isBorder = true;
-                     
-                     // Hero buttons get a different border style (lighter)
-                     // Regular buttons get outline
-                     if (isBorder && !isHero)
-                        pixels[y * w + x] = borderCol; // Using secondary color as border
-                     else
-                        pixels[y * w + x] = color;
-                 }
-             }
-
-             tex.SetPixels(pixels);
-             tex.Apply();
-
-             var sprite = Sprite.Create(tex, new Rect(0,0,w,h), new Vector2(0.5f, 0.5f));
-             _valorantCache[key] = sprite;
-             return sprite;
-        }
-
-        private Sprite GetSimpleRectSprite(Color c) {
-            return GenerateValorantSprite(64, 64, c, c, false);
-        }
-
-        /// <summary>
-        /// Creates a high-quality angular button.
-        /// </summary>
-        private void MakeModernButton(RectTransform parent, string label, string iconPath, 
-            Color faceColor, Color borderColor, float height, int fontSize, 
-            UnityEngine.Events.UnityAction onClick, bool isHero = false)
-        {
-            var btnObj = new GameObject($"Btn_{label}", typeof(RectTransform), typeof(CanvasGroup), typeof(Button));
-            btnObj.transform.SetParent(parent, false);
-            
-            if (height > 0)
-            {
-                var le = btnObj.AddComponent<LayoutElement>();
-                le.preferredHeight = height;
-                le.minHeight = height;
-            }
-
-            // 1. Main Background
-            var faceImg = CreateImage(btnObj, "Face");
-            // Use 128x64 or 256x128 depending on aspect? 
-            // We generate 256x128 to have enough pixels for the chamfer details
-            faceImg.sprite = GenerateValorantSprite(256, 128, faceColor, borderColor, isHero);
-            faceImg.type = Image.Type.Simple; 
-            
-            var faceRT = faceImg.rectTransform;
-            faceRT.anchorMin = Vector2.zero; faceRT.anchorMax = Vector2.one;
-            faceRT.offsetMin = Vector2.zero; faceRT.offsetMax = Vector2.zero;
-
-            // 2. Content
-            var contentObj = new GameObject("Content", typeof(RectTransform));
-            contentObj.transform.SetParent(btnObj.transform, false);
-            Stretch(contentObj.GetComponent<RectTransform>());
-            
-            var hlg = contentObj.AddComponent<HorizontalLayoutGroup>();
-            // Hero buttons have more padding
-            hlg.padding = new RectOffset(isHero ? 40 : 20, 20, 5, 5);
-            hlg.spacing = 15;
-            hlg.childAlignment = isHero ? TextAnchor.MiddleLeft : TextAnchor.MiddleLeft;
-            hlg.childControlWidth = false; 
-            hlg.childForceExpandWidth = false;
-
-            // 3. Icon
-            if (!string.IsNullOrEmpty(iconPath))
-            {
-                Sprite iconSprite = Resources.Load<Sprite>(iconPath);
-                if (iconSprite != null)
-                {
-                    var iconImg = CreateImage(contentObj, "Icon");
-                    iconImg.sprite = iconSprite;
-                    iconImg.preserveAspect = true;
-                    // White icons usually
-                    iconImg.color = isHero ? Color.white : new Color(1,1,1, 0.8f);
-                    
-                    var le = iconImg.gameObject.AddComponent<LayoutElement>();
-                    float iconSize = fontSize * 1.2f;
-                    le.preferredWidth = iconSize;
-                    le.preferredHeight = iconSize;
-                }
-            }
-
-            // 4. Text
-            var lblObj = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
-            lblObj.transform.SetParent(contentObj.transform, false);
-            var tmp = lblObj.GetComponent<TextMeshProUGUI>();
-            tmp.text = label;
-            tmp.fontSize = fontSize;
-            tmp.color = isHero ? Color.white : new Color(0.9f, 0.9f, 0.9f);
-            tmp.fontStyle = FontStyles.Bold;
-            tmp.alignment = TextAlignmentOptions.Left; 
-            tmp.characterSpacing = 4f; // Wide spacing like Valorant
-            tmp.enableWordWrapping = false;
-            
-            // 5. Button Component
-            var btn = btnObj.GetComponent<Button>();
-            btn.targetGraphic = faceImg;
-            btn.transition = Selectable.Transition.ColorTint;
-            var cols = btn.colors;
-            cols.normalColor = Color.white;
-            cols.highlightedColor = new Color(1.2f, 1.2f, 1.2f); // Brighten on hover
-            cols.pressedColor = new Color(0.8f, 0.8f, 0.8f);
-            btn.colors = cols;
-
-            if (onClick != null) btn.onClick.AddListener(onClick);
-        }
-
-        private void MakeModernPill(RectTransform parent, string label, string iconPath, Color color, UnityEngine.Events.UnityAction action)
-        {
-            // Simple rectangular pill/tab
-            var go = new GameObject($"Tab_{label}", typeof(RectTransform), typeof(Image), typeof(Button), typeof(HorizontalLayoutGroup));
-            go.transform.SetParent(parent, false);
-            
-            var img = go.GetComponent<Image>();
-            // Use same generator but small/no chamfer logic by reusing isHero=false which has small chamfer
-            img.sprite = GenerateValorantSprite(128, 64, color, color, false);
-            img.type = Image.Type.Simple;
-            img.color = Color.white; 
-
-            var btn = go.GetComponent<Button>();
-            btn.targetGraphic = img;
-            btn.transition = Selectable.Transition.ColorTint;
-            if (action != null) btn.onClick.AddListener(action);
-
-            var hlg = go.GetComponent<HorizontalLayoutGroup>();
-            hlg.padding = new RectOffset(16, 16, 8, 8);
-            hlg.spacing = 8;
-            hlg.childAlignment = TextAnchor.MiddleCenter;
-            hlg.childControlWidth = true; 
-
-            if (!string.IsNullOrEmpty(iconPath))
-            {
-                Sprite ico = Resources.Load<Sprite>(iconPath);
-                if (ico != null)
-                {
-                    var i = CreateImage(go, "Icon");
-                    i.sprite = ico;
-                    i.preserveAspect = true;
-                    var le = i.gameObject.AddComponent<LayoutElement>();
-                    le.preferredWidth = 20; le.preferredHeight = 20;
-                }
-            }
-
-            var t = MakeText(go.GetComponent<RectTransform>(), "Txt", label, 14, Color.white, FontStyles.Bold);
-            t.GetComponent<TextMeshProUGUI>().enableWordWrapping = false;
-        }
-
-        private Image CreateImage(GameObject parent, string name)
-        {
-            var go = new GameObject(name, typeof(RectTransform), typeof(Image));
-            go.transform.SetParent(parent.transform, false);
-            return go.GetComponent<Image>();
-        }
-
-        /* 
-           Preserving existing positioning helpers below 
-        */
-
-        // ─── Positioning helpers ───
-        /// <summary>
-        /// Stretches a RectTransform to fill its parent.
-        /// </summary>
-        /// <param name="rt">The RectTransform to stretch.</param>
-        private static void Stretch(RectTransform rt)
-        {
-            rt.anchorMin = Vector2.zero; rt.anchorMax = Vector2.one;
-            rt.offsetMin = rt.offsetMax = Vector2.zero;
-        }
-
-        /// <summary>
-        /// Anchors a RectTransform to the top-center with given size and position.
-        /// </summary>
-        /// <param name="rt">The RectTransform to anchor.</param>
-        /// <param name="size">Width and height of the element.</param>
-        /// <param name="pos">Anchored position offset from the top-center.</param>
-        private static void AnchorTop(RectTransform rt, Vector2 size, Vector2 pos)
-        {
-            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 1f);
-            rt.pivot = new Vector2(0.5f, 1f);
-            rt.sizeDelta = size; rt.anchoredPosition = pos;
-        }
-
-        /// <summary>
-        /// Centers a RectTransform with the given width and height.
-        /// </summary>
-        /// <param name="rt">The RectTransform to center.</param>
-        /// <param name="w">Width of the element.</param>
-        /// <param name="h">Height of the element.</param>
-        private static void CenterBox(RectTransform rt, float w, float h)
-        {
-            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
-            rt.pivot = new Vector2(0.5f, 0.5f);
-            rt.sizeDelta = new Vector2(w, h);
-        }
     }
+
 }
