@@ -856,7 +856,7 @@ namespace IOChef.UI
             var t = go.GetComponent<TextMeshProUGUI>();
             t.text = text; t.fontSize = size; t.color = c;
             t.fontStyle = style; t.alignment = TextAlignmentOptions.Center;
-            t.enableWordWrapping = true;
+            t.textWrappingMode = TextWrappingModes.Normal;
             return go.GetComponent<RectTransform>();
         }
 

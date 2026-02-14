@@ -504,7 +504,7 @@ namespace IOChef.UI
             var nameTMP = nameRT.GetComponent<TextMeshProUGUI>();
             nameTMP.alignment = TextAlignmentOptions.Left;
             nameTMP.overflowMode = TextOverflowModes.Ellipsis;
-            nameTMP.enableWordWrapping = false;
+            nameTMP.textWrappingMode = TextWrappingModes.NoWrap;
 
             if (bundle.valueMultiplier > 1)
             {

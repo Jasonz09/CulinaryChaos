@@ -1,11 +1,11 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
 Built from '6000.3/staging' branch; Version is '6000.3.7f1 (696ec25a53d1) revision 6909634'; Using compiler version '194234433'; Build Type 'Release'
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-zhaoF" at "2026-02-14T06:39:20.6845571Z"
 OS: 'Windows 11  (10.0.26200) Core' Language: 'en' Physical Memory: 16068 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-zhaoF" at "2026-02-11T05:59:12.0672986Z"
 System  architecture: x64
 Process architecture: x64
-Date: 2026-02-14T06:39:20Z
+Date: 2026-02-11T05:59:12Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Unity.exe
@@ -16,7 +16,7 @@ C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos
 -buildWindows64Player
 C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Build\CulinaryChaos.exe
 -logFile
-C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\unity_build.log
+build_error_3.log
 Successfully changed project path to: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos
 C:/Users/zhaoF/OneDrive/Documents/UnityProjects/CulinaryChaos
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -54,27 +54,27 @@ C:/Users/zhaoF/OneDrive/Documents/UnityProjects/CulinaryChaos
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
     "memorysetup-temp-allocator-size-cloud-worker=32768"
-Player connection [11524]  Target information:
+Player connection [5488]  Target information:
 
-Player connection [11524]  * "[IP] 192.168.56.1 [Port] 55504 [Flags] 2 [Guid] 908813647 [EditorId] 908813647 [Version] 1048832 [Id] WindowsEditor(7,iiSimply-JZ) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [5488]  * "[IP] 192.168.56.1 [Port] 55504 [Flags] 2 [Guid] 1477071172 [EditorId] 1477071172 [Version] 1048832 [Id] WindowsEditor(7,iiSimply-JZ) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [11524]  * "[IP] 192.168.1.72 [Port] 55504 [Flags] 2 [Guid] 908813647 [EditorId] 908813647 [Version] 1048832 [Id] WindowsEditor(7,iiSimply-JZ) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [5488]  * "[IP] 192.168.1.72 [Port] 55504 [Flags] 2 [Guid] 1477071172 [EditorId] 1477071172 [Version] 1048832 [Id] WindowsEditor(7,iiSimply-JZ) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [11524] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [11524] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [5488] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [5488] Host joined alternative multi-casting on [225.0.0.222:34997]...
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
-[Package Manager] Connected to IPC stream "Upm-27280" after 0.4 seconds.
+[Package Manager] Connected to IPC stream "Upm-32324" after 0.3 seconds.
 [Licensing::Module] Licensing is not yet initialized.
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.17.4+4293ba1
-  Session Id:              a68de148c3e04a9dbff6fc877890d22a
-  Correlation Id:          daa8657e703bf3198d0a7f2cc0638d81
-  External correlation Id: 8296924837243528674
+  Session Id:              ece5537f5f0d49a68c90876c91b32d82
+  Correlation Id:          e40ea1e94fc05706b4b566b681911ca5
+  External correlation Id: 4763805526342945745
   Machine Id:              o5u3NjNtQ2Kxw4d681ZH6kVuf64=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-zhaoF" (connect: 0.00s, validation: 0.00s, handshake: 3.28s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-zhaoF-notifications" at "2026-02-14T06:39:23.965876Z"
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-zhaoF" (connect: 0.00s, validation: 0.00s, handshake: 1.88s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-zhaoF-notifications" at "2026-02-11T05:59:13.9486531Z"
 [Licensing::Module] Error: Access token is unavailable; failed to update
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
@@ -84,8 +84,8 @@ Input System module state changed to: Initialized.
   Expiration: Unlimited
 [Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
 [Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] Licensing Background thread has ended after 3.29s
-[Licensing::Module] Licensing is initialized (took 2.49s).
+[Licensing::Module] Licensing Background thread has ended after 1.89s
+[Licensing::Module] Licensing is initialized (took 1.38s).
 [Licensing::Client] Successfully resolved entitlement details
 Library Redirect Path: Library/
 Unable to parse file ProjectSettings/TagManager.asset: [Parser Failure at line 44: Expect ':' between key and value within mapping]
@@ -98,8 +98,7 @@ YAML error in 'ProjectSettings/ProjectSettings.asset' - Unexpected scalar when r
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Artifact Garbage Collection - Removed 2 unused hashed content files
-Refreshing native plugins compatible for Editor in 1.54 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.05 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.3.7f1 (696ec25a53d1)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.3.7f1/Editor/Data/Resources/UnitySubsystems
@@ -115,7 +114,7 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.3.7f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.3.7f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56280
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56324
 Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
 Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
 ImportWorker Server TCP listen port: 0
@@ -123,40 +122,40 @@ AcceleratorClientConnectionCallback - disconnected - :0
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002214 seconds.
-- Loaded All Assemblies, in  0.540 seconds
+Registered in 0.002243 seconds.
+- Loaded All Assemblies, in  0.421 seconds
 Native extension for WindowsStandalone target not found
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.539 seconds
-Domain Reload Profiling: 1076ms
-	BeginReloadAssembly (197ms)
+- Finished resetting the current domain, in  0.425 seconds
+Domain Reload Profiling: 842ms
+	BeginReloadAssembly (138ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (9ms)
-	RebuildCommonClasses (45ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (59ms)
-	LoadAllAssembliesAndSetupDomain (222ms)
-		LoadAssemblies (185ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (60ms)
+	LoadAllAssembliesAndSetupDomain (170ms)
+		LoadAssemblies (125ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (218ms)
-			TypeCache.Refresh (216ms)
-				TypeCache.ScanAssembly (199ms)
+		AnalyzeDomain (166ms)
+			TypeCache.Refresh (164ms)
+				TypeCache.ScanAssembly (151ms)
 			BuildScriptInfoCaches (0ms)
-			ResolveRequiredComponents (1ms)
-	FinalizeReload (540ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (426ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (487ms)
+		SetupLoadedEditorAssemblies (384ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (68ms)
+			InitializePlatformSupportModulesInManaged (51ms)
 			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (110ms)
-			ProcessInitializeOnLoadAttributes (198ms)
-			ProcessInitializeOnLoadMethodAttributes (106ms)
+			BeforeProcessingInitializeOnLoad (86ms)
+			ProcessInitializeOnLoadAttributes (167ms)
+			ProcessInitializeOnLoadMethodAttributes (77ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -175,7 +174,6 @@ Package Manager log level set to [2]
     com.unity.ide.rider@3.0.39 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.ide.rider@4504839d03f7)
     com.unity.ide.visualstudio@2.0.26 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
     com.unity.inputsystem@1.18.0 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.inputsystem@57d0e36f6123)
-    com.unity.nuget.newtonsoft-json@3.2.2 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64)
     com.unity.purchasing@4.14.2 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.purchasing@039fd41c6e81)
     com.unity.timeline@1.8.10 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.timeline@7f8b2fb101b6)
     com.unity.visualscripting@1.9.9 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.visualscripting@191c0d7e3b69)
@@ -189,6 +187,7 @@ Package Manager log level set to [2]
     com.unity.2d.aseprite@3.0.1 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.2d.aseprite@809e3a168ff7)
     com.unity.2d.tooling@1.0.2 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.2d.tooling@249995156768)
     com.unity.services.analytics@6.2.0 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.services.analytics@b6335889ba61)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64)
     com.unity.2d.common@12.0.2 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.2d.common@800085e896ad)
     com.unity.mathematics@1.3.3 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.mathematics@19a9377c4ffa)
     com.unity.collections@2.6.2 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.collections@aea9d3bd5e19)
@@ -241,98 +240,164 @@ Package Manager log level set to [2]
     com.unity.ext.nunit@2.0.5 (location: C:\Users\zhaoF\OneDrive\Documents\UnityProjects\CulinaryChaos\Library\PackageCache\com.unity.ext.nunit@d8c07649098d)
 [Subsystems] No new subsystems found in resolved package list.
 [Package Manager] Done registering packages in 0.03 seconds
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
 Starting: C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
 WorkingDir: C:/Users/zhaoF/OneDrive/Documents/UnityProjects/CulinaryChaos
 DisplayProgressbar: Compiling Scripts
-ExitCode: 0 Duration: 0s565ms
-[ 303/1326  0s] WriteResponseFile Library/Bee/artifacts/rsp/4747638433968585886.rsp
-[1016/1326  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
-*** Tundra build success (0.51 seconds), 2 items updated, 1326 evaluated
-AssetDatabase: script compilation time: 1.191160s
+ExitCode: 0 Duration: 2s285ms
+[1014/1326  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[1318/1326  1s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)
+Assets\_Game\Scripts\UI\ResultsScreenUI.cs(383,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\IngredientShopUI.cs(624,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\HUDCanvas.cs(523,17): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\HUDCanvas.cs(747,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\LevelSelectUI.cs(859,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\IngredientShopUI.cs(958,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1033,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1485,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1536,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(267,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(328,17): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(671,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(764,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.Shop.cs(507,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+[1319/1326  0s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[1320/1326  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 136 defines and 363 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[1321/1326  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 138 defines and 343 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[1322/1326  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[1323/1326  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
+[1324/1326  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+[1325/1326  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
+*** Tundra build success (2.25 seconds), 9 items updated, 1326 evaluated
+Assets\_Game\Scripts\UI\ResultsScreenUI.cs(383,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\IngredientShopUI.cs(624,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\HUDCanvas.cs(523,17): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\HUDCanvas.cs(747,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\LevelSelectUI.cs(859,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\IngredientShopUI.cs(958,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1033,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1485,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1536,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(267,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(328,17): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(671,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(764,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.Shop.cs(507,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+AssetDatabase: script compilation time: 2.829350s
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.366 seconds
-Refreshing native plugins compatible for Editor in 14.54 ms, found 2 plugins.
+- Loaded All Assemblies, in  1.287 seconds
+Refreshing native plugins compatible for Editor in 6.07 ms, found 2 plugins.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 11.93 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 5.09 ms, found 2 plugins.
 ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  4.466 seconds
-Domain Reload Profiling: 5823ms
-	BeginReloadAssembly (380ms)
+- Finished resetting the current domain, in  3.151 seconds
+Domain Reload Profiling: 4431ms
+	BeginReloadAssembly (319ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (15ms)
+		DisableScriptedObjects (12ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (171ms)
-	RebuildCommonClasses (58ms)
-	RebuildNativeTypeToScriptingClass (16ms)
-	initialDomainReloadingComplete (50ms)
-	LoadAllAssembliesAndSetupDomain (852ms)
-		LoadAssemblies (677ms)
+		CreateAndSetChildDomain (155ms)
+	RebuildCommonClasses (44ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (867ms)
+		LoadAssemblies (751ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (323ms)
-			TypeCache.Refresh (208ms)
-				TypeCache.ScanAssembly (187ms)
-			BuildScriptInfoCaches (102ms)
-			ResolveRequiredComponents (10ms)
-	FinalizeReload (4467ms)
+		AnalyzeDomain (222ms)
+			TypeCache.Refresh (142ms)
+				TypeCache.ScanAssembly (129ms)
+			BuildScriptInfoCaches (71ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (3151ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (4267ms)
+		SetupLoadedEditorAssemblies (3032ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (37ms)
-			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (302ms)
-			ProcessInitializeOnLoadAttributes (3431ms)
-			ProcessInitializeOnLoadMethodAttributes (478ms)
-			AfterProcessingInitializeOnLoad (11ms)
-			EditorAssembliesLoaded (1ms)
+			InitializePlatformSupportModulesInManaged (25ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (199ms)
+			ProcessInitializeOnLoadAttributes (2544ms)
+			ProcessInitializeOnLoadMethodAttributes (252ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (12ms)
-Asset Pipeline Refresh (id=3718ffced2a92494380f9c1124a87440): Total: 8.071 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Refreshing native plugins compatible for Editor in 7.42 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=43b5ae5d003779f40bc3a3c42e864c02): Total: 8.177 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
 	Summary:
 		Imports: total=0 (actual=0, local cache=0, cache server=0)
-		Asset DB Process Time: managed=0 ms, native=5368 ms
-		Asset DB Callback time: managed=34 ms, native=33 ms
-		Scripting: domain reloads=1, domain reload time=1366 ms, compile time=1195 ms, other=73 ms
-		Project Asset Count: scripts=1394, non-scripts=1980
-		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Asset DB Process Time: managed=0 ms, native=3741 ms
+		Asset DB Callback time: managed=201 ms, native=49 ms
+		Scripting: domain reloads=1, domain reload time=1288 ms, compile time=2832 ms, other=65 ms
+		Project Asset Count: scripts=1393, non-scripts=1973
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
 		Scan Filter Count: 0
 	InvokeCustomDependenciesCallbacks: 0.001ms
-	InvokePackagesCallback: 36.064ms
-	ApplyChangesToAssetFolders: 1.092ms
-	Scan: 405.613ms
-	OnSourceAssetsModified: 0.003ms
-	CategorizeAssetsWithTransientArtifact: 65.960ms
-	ProcessAssetsWithTransientArtifactChanges: 116.832ms
-	CategorizeAssets: 42.453ms
-	ImportOutOfDateAssets: 4501.082ms (3305.222ms without children)
-		CompileScripts: 1194.595ms
+	InvokePackagesCallback: 37.770ms
+	ApplyChangesToAssetFolders: 0.777ms
+	Scan: 228.341ms
+	OnSourceAssetsModified: 0.921ms
+	CategorizeAssetsWithTransientArtifact: 61.342ms
+	ProcessAssetsWithTransientArtifactChanges: 74.632ms
+	CategorizeAssets: 33.145ms
+	ImportOutOfDateAssets: 3171.011ms (337.984ms without children)
+		CompileScripts: 2831.561ms
 		ReloadNativeAssets: 0.001ms
-		UnloadImportedAssets: 0.154ms
-		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.576ms
-		InitializingProgressBar: 0.000ms
+		UnloadImportedAssets: 0.100ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.792ms
+		InitializingProgressBar: 0.001ms
 		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
-		OnDemandSchedulerStart: 0.533ms
-	PostProcessAllAssets: 34.182ms
-	GatherAllCurrentPrimaryArtifactRevisions: 0.003ms
-	UnloadStreamsBegin: 1.982ms
-	PersistCurrentRevisions: 0.212ms
-	UnloadStreamsEnd: 0.004ms
-	GenerateScriptTypeHashes: 3.639ms
-	Untracked: 2865.804ms
+		OnDemandSchedulerStart: 0.572ms
+	PostProcessAllAssets: 204.126ms
+	Hotreload: 9.635ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.002ms
+	UnloadStreamsBegin: 1.389ms
+	PersistCurrentRevisions: 0.126ms
+	UnloadStreamsEnd: 0.002ms
+	GenerateScriptTypeHashes: 2.453ms
+	Untracked: 4353.806ms
 
 Application.AssetDatabase Initial Refresh End
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
-Scanning for USB devices : 2.491ms
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Scanning for USB devices : 2.690ms
 Initializing Unity extensions:
 [MODES] ModeService[none].Initialize
 [MODES] ModeService[none].LoadModes
 [MODES] Loading mode Default (0) for mode-current-id-IOChef
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5853 unused Assets / (2.2 MB). Loaded Objects now: 6440.
-Memory consumption went from 159.8 MB to 157.7 MB.
-Total: 19.701400 ms (FindLiveObjects: 0.897200 ms CreateObjectMapping: 0.566500 ms MarkObjects: 14.829800 ms  DeleteObjects: 3.404200 ms)
+Unloading 5846 unused Assets / (3.5 MB). Loaded Objects now: 6439.
+Memory consumption went from 160.5 MB to 157.0 MB.
+Total: 18.687400 ms (FindLiveObjects: 0.734900 ms CreateObjectMapping: 1.153300 ms MarkObjects: 12.873700 ms  DeleteObjects: 3.923600 ms)
 
 building x86_64 windows player!
 [ServicesCore]: To use Unity's dashboard services, you need to link your Unity project to a project ID. To do this, go to Project Settings to select your organization, select your project and then link a project ID. You also need to make sure your organization has access to the required products. Visit https://dashboard.unity3d.com to sign up.
@@ -349,202 +414,254 @@ UnityEditor.Build.BuildPipelineInterfaces:OnBuildPreProcess (UnityEditor.Build.R
 
 (Filename: ./Library/PackageCache/com.unity.services.core@8ba50f624741/Editor/Core/Build/ProjectUnlinkBuildWarning.cs Line: 29)
 
-Start importing ProjectSettings/UnityConnectSettings.asset using Guid(0000000000000000a100000000000000) (LibraryAssetImporter) -> (artifact id: '532461bb864f092c279f230f11b9d553') in 0.0107873 seconds
-Refreshing native plugins compatible for Editor in 6.72 ms, found 2 plugins.
+Start importing ProjectSettings/UnityConnectSettings.asset using Guid(0000000000000000a100000000000000) (LibraryAssetImporter) -> (artifact id: '532461bb864f092c279f230f11b9d553') in 0.0122875 seconds
+Refreshing native plugins compatible for Editor in 6.49 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Asset Pipeline Refresh (id=466304409db505646834280dcc0863d9): Total: 0.134 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=f5bc0b0cf0e445041acfb54c2561f96d): Total: 0.072 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
 Starting: C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aESkipCompile.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssembliesAndTypeDB
 WorkingDir: C:/Users/zhaoF/OneDrive/Documents/UnityProjects/CulinaryChaos
-ExitCode: 0 Duration: 0s108ms
-*** Tundra build success (0.07 seconds), 0 items updated, 4 evaluated
-Start importing Assets/Resources/PerformanceTestRunInfo.json using Guid(a3ec63e3d647c7d4baad31d23c583bc9) (TextScriptImporter) -> (artifact id: '9c4499c45fc6fb4104af8ee1647185df') in 0.022457 seconds
-Start importing Assets/Resources/PerformanceTestRunSettings.json using Guid(c392b7f1678a5e042aef491fbb386072) (TextScriptImporter) -> (artifact id: 'b95a9e7717280ac70ce58c69a1af5935') in 0.0196753 seconds
-Refreshing native plugins compatible for Editor in 7.20 ms, found 2 plugins.
+ExitCode: 0 Duration: 1s488ms
+[3/4        1s] BuildPlayerDataGenerator Library/BuildPlayerData/Editor/TypeDb-All.json
+*** Tundra build success (1.45 seconds), 1 items updated, 4 evaluated
+Start importing Assets/Resources/PerformanceTestRunSettings.json using Guid(715ea547a2b19214297ac6894c42e3a4) (TextScriptImporter) -> (artifact id: '750fa0e385fcdad3f94655a5a4325d16') in 0.0231888 seconds
+Start importing Assets/Resources/PerformanceTestRunInfo.json using Guid(a3573326a6da26f4fa078b798012ff27) (TextScriptImporter) -> (artifact id: 'a663665f0faec6fedbb4f530318b0821') in 0.0183958 seconds
+Refreshing native plugins compatible for Editor in 7.24 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Asset Pipeline Refresh (id=9d1e2fe28d56baa4ea6b9e43047147e0): Total: 0.091 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=6f42e691ab2b2ed4faee799bc6391031): Total: 0.084 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
 [ScriptCompilation] Requested script compilation because: Recompiling scripts for player build.
 BuildPlayer: start building target 19
+Total cache size 107116900
+Total cache size after purge 107116900, took 00:00:00.2350748
 Starting: C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aP.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssembliesAndTypeDB
 WorkingDir: C:/Users/zhaoF/OneDrive/Documents/UnityProjects/CulinaryChaos
-Total cache size 194410156
-Total cache size after purge 194410156, took 00:00:00.5493573
-ExitCode: 0 Duration: 2s85ms
-[538/876    0s] WriteResponseFile Library/Bee/artifacts/rsp/4747638433968585886.rsp
-[714/876    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
-[768/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Purchasing.Common.dll
-[769/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.DocCodeExamples.dll
-[770/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Common.Runtime.dll
-[771/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Timeline.dll
-[772/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.SpatialTracking.dll
-[773/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.AI.Navigation.dll
-[774/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.dll
-[775/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Tilemap.Extras.dll
-[776/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Scheduler.dll
-[777/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.SecurityCore.dll
-[778/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.PixelPerfect.dll
-[779/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.SecurityStub.dll
-[780/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.Codeless.dll
-[781/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.dll
-[782/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleCore.dll
-[783/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleMacosStub.dll
-[784/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Mathematics.dll
-[785/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll
-[786/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.State.dll
-[787/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleStub.dll
-[788/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Components.dll
-[789/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Device.dll
-[790/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll
-[791/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.dll
-[792/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.dll
-[793/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Registration.dll
-[794/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InputSystem.dll
-[795/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Advertisements.dll
-[796/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.WinRTCore.dll
-[797/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Configuration.dll
-[798/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Environments.Internal.dll
-[799/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Analytics.dll
-[800/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Environments.dll
-[801/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InputSystem.ForUI.dll
-[802/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Networking.dll
-[803/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Threading.dll
-[804/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Internal.dll
-[805/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Collections.dll
-[806/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Flow.dll
-[807/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Telemetry.dll
-[808/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Cinemachine.dll
-[809/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.Stores.dll
-[810/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll
-[811/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.WinRTStub.dll
-[812/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Animation.Runtime.dll
-[813/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.IK.Runtime.dll
-[814/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Multiplayer.Center.Common.dll
-[815/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Burst.dll
-[816/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleStub.pdb
-[817/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.SecurityCore.pdb
-[818/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Analytics.dll
-[819/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.SecurityStub.pdb
-[820/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Analytics.DataPrivacy.dll
-[821/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.PixelPerfect.pdb
-[822/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleCore.pdb
-[823/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.001.pdb
-[824/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.TextMeshPro.pdb
-[825/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.UI.pdb
-[826/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.WinRTCore.pdb
-[827/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.Codeless.pdb
-[828/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.State.pdb
-[829/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Timeline.pdb
-[830/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Purchasing.Common.pdb
-[831/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.AI.Navigation.pdb
-[832/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.pdb
-[833/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.pdb
-[834/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Scheduler.pdb
-[835/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Tilemap.Extras.pdb
-[836/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.SpatialTracking.pdb
-[837/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.DocCodeExamples.pdb
-[838/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.pdb
-[839/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InputSystem.pdb
-[840/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.IK.Runtime.pdb
-[841/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Common.Runtime.pdb
-[842/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Collections.pdb
-[843/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Internal.pdb
-[844/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Environments.pdb
-[845/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.004.pdb
-[846/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Registration.pdb
-[847/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Device.pdb
-[848/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.Stores.pdb
-[849/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Telemetry.pdb
-[850/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Configuration.pdb
-[851/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Burst.pdb
-[852/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.pdb
-[853/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Analytics.DataPrivacy.pdb
-[854/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Multiplayer.Center.Common.pdb
-[855/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Environments.Internal.pdb
-[856/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Threading.pdb
-[857/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Mathematics.pdb
-[858/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Networking.pdb
-[859/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InputSystem.ForUI.pdb
-[860/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Flow.pdb
-[861/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.SpriteShape.Runtime.pdb
-[862/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.TextMeshPro.dll
-[863/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Cinemachine.pdb
+ExitCode: 0 Duration: 5s50ms
+[494/876    0s] WriteResponseFile Library/Bee/artifacts/rsp/4747638433968585886.rsp
+[713/876    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[766/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.AI.Navigation.dll
+[767/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Configuration.dll
+[768/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Analytics.dll
+[769/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.TextMeshPro.dll
+[770/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.SecurityStub.dll
+[771/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.dll
+[772/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Collections.dll
+[773/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Timeline.dll
+[774/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.Codeless.dll
+[775/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Environments.dll
+[776/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.UI.dll
+[777/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Components.dll
+[778/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.dll
+[779/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Telemetry.dll
+[780/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Multiplayer.Center.Common.dll
+[781/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Burst.dll
+[782/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleStub.dll
+[783/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.IK.Runtime.dll
+[784/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.WinRTStub.dll
+[785/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Internal.dll
+[786/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Tilemap.Extras.dll
+[787/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.dll
+[788/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.PixelPerfect.dll
+[789/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.SpatialTracking.dll
+[790/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Analytics.DataPrivacy.dll
+[791/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Device.dll
+[792/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Common.Runtime.dll
+[793/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll
+[794/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Environments.Internal.dll
+[795/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.Stores.dll
+[796/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InputSystem.dll
+[797/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll
+[798/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Cinemachine.dll
+[799/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.WinRTCore.dll
+[800/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Analytics.dll
+[801/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.State.dll
+[802/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleMacosStub.dll
+[803/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Purchasing.Common.dll
+[804/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.DocCodeExamples.dll
+[805/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll
+[806/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InputSystem.ForUI.dll
+[807/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Scheduler.dll
+[808/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleCore.dll
+[809/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Telemetry.pdb
+[810/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Advertisements.dll
+[811/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Flow.dll
+[812/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Internal.pdb
+[813/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Networking.dll
+[814/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.Codeless.pdb
+[815/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Timeline.pdb
+[816/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Tilemap.Extras.pdb
+[817/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Threading.dll
+[818/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.IK.Runtime.pdb
+[819/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleStub.pdb
+[820/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.SecurityCore.dll
+[821/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Registration.dll
+[822/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.pdb
+[823/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.SpatialTracking.pdb
+[824/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Animation.Runtime.dll
+[825/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.pdb
+[826/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.004.dll
+[827/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.004.pdb
+[828/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Mathematics.dll
+[829/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Configuration.pdb
+[830/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Collections.pdb
+[831/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.pdb
+[832/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.Stores.pdb
+[833/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Common.Runtime.pdb
+[834/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.TextMeshPro.pdb
+[835/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.WinRTCore.pdb
+[836/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.State.pdb
+[837/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Burst.pdb
+[838/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Environments.pdb
+[839/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Multiplayer.Center.Common.pdb
+[840/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Purchasing.Common.pdb
+[841/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InputSystem.pdb
+[842/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.AI.Navigation.pdb
+[843/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.DocCodeExamples.pdb
+[844/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Scheduler.pdb
+[845/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.SecurityCore.pdb
+[846/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleCore.pdb
+[847/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Flow.pdb
+[848/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Device.pdb
+[849/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.001.pdb
+[850/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.UI.pdb
+[851/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.SecurityStub.pdb
+[852/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Networking.pdb
+[853/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Analytics.pdb
+[854/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.WinRTStub.pdb
+[855/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Mathematics.pdb
+[856/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Analytics.DataPrivacy.pdb
+[857/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.pdb
+[858/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Animation.Runtime.pdb
+[859/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Threading.pdb
+[860/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Advertisements.pdb
+[861/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.PixelPerfect.pdb
+[862/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Components.pdb
+[863/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.SpriteShape.Runtime.pdb
 [864/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleMacosStub.pdb
-[865/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.WinRTStub.pdb
-[866/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.pdb
-[867/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Analytics.pdb
-[868/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Analytics.pdb
-[869/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.Advertisements.pdb
-[870/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.2D.Animation.Runtime.pdb
-[871/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/UnityEngine.UI.dll
-[872/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Components.pdb
-[873/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.004.dll
-*** Tundra build success (2.04 seconds), 108 items updated, 876 evaluated
-Total cache size 194410156
-Total cache size after purge 194410156, took 00:00:00.5767760
-Rebuilding Data files because Assets/Resources/PerformanceTestRunInfo.json is dirty (hash)
+[865/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Environments.Internal.pdb
+[866/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Analytics.pdb
+[867/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Registration.pdb
+[868/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Cinemachine.pdb
+[869/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Unity.InputSystem.ForUI.pdb
+[870/876    0s] Csc Library/Bee/artifacts/1900b0aP.dag/Assembly-CSharp.dll (+2 others)
+Assets\_Game\Scripts\UI\ResultsScreenUI.cs(383,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\HUDCanvas.cs(523,17): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\HUDCanvas.cs(747,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\LevelSelectUI.cs(859,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\IngredientShopUI.cs(624,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\IngredientShopUI.cs(958,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1033,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1485,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1536,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(267,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(328,17): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(671,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(764,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\_Game\Scripts\UI\MainMenuUI.Shop.cs(507,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+[871/876    0s] ILPostProcess Library/Bee/artifacts/1900b0aP.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aP.dag/Assembly-CSharp.dll, with 127 defines and 244 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[872/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.pdb
+[873/876    0s] CopyFiles Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.dll
+[875/876    1s] BuildPlayerDataGenerator Library/BuildPlayerData/Player/RuntimeInitializeOnLoads.json (+1 other)
+*** Tundra build success (5.02 seconds), 111 items updated, 876 evaluated
+Assets\_Game\Scripts\UI\ResultsScreenUI.cs(383,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\HUDCanvas.cs(523,17): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\HUDCanvas.cs(747,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\LevelSelectUI.cs(859,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\IngredientShopUI.cs(624,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\IngredientShopUI.cs(958,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1033,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1485,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.cs(1536,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(267,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(328,17): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(671,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.Heroes.cs(764,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\_Game\Scripts\UI\MainMenuUI.Shop.cs(507,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Total cache size 107116900
+Total cache size after purge 107116900, took 00:00:00.2582785
+Rebuilding Data files because Assets/Resources/PerformanceTestRunSettings.json is dirty (hash)
 Opening scene 'Assets/_Game/Scenes/Bootstrap.unity'
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
 Loaded scene 'Assets/_Game/Scenes/Bootstrap.unity'
-	Deserialize:            3.569 ms
-	Integration:            356.854 ms
-	Integration of assets:  0.009 ms
-	Thread Wait Time:       0.126 ms
-	Total Operation Time:   360.558 ms
-Unloading 92 unused Assets / (12.3 MB). Loaded Objects now: 6477.
-Memory consumption went from 170.7 MB to 158.4 MB.
-Total: 17.559800 ms (FindLiveObjects: 0.396600 ms CreateObjectMapping: 0.202100 ms MarkObjects: 16.284700 ms  DeleteObjects: 0.674300 ms)
+	Deserialize:            1.371 ms
+	Integration:            219.526 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.020 ms
+	Total Operation Time:   220.921 ms
+Unloading 90 unused Assets / (1.2 MB). Loaded Objects now: 6472.
+Memory consumption went from 158.8 MB to 157.6 MB.
+Total: 17.316500 ms (FindLiveObjects: 0.357200 ms CreateObjectMapping: 0.220800 ms MarkObjects: 15.911700 ms  DeleteObjects: 0.825500 ms)
 
-Created GICache directory at C:/Users/zhaoF/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.017s, timestamps: [19.440 - 19.457]
+Created GICache directory at C:/Users/zhaoF/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.021s, timestamps: [21.058 - 21.079]
 Opening scene 'Assets/_Game/Scenes/Kitchen_Level_1.unity'
-Unloading 51 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 50 Unused Serialized files (Serialized files now loaded: 0)
 Loaded scene 'Assets/_Game/Scenes/Kitchen_Level_1.unity'
-	Deserialize:            11.863 ms
-	Integration:            245.007 ms
-	Integration of assets:  0.007 ms
-	Thread Wait Time:       0.023 ms
-	Total Operation Time:   256.900 ms
-Unloading 72 unused Assets / (49.2 KB). Loaded Objects now: 6567.
-Memory consumption went from 162.7 MB to 162.7 MB.
-Total: 21.461700 ms (FindLiveObjects: 0.531500 ms CreateObjectMapping: 0.545800 ms MarkObjects: 19.971900 ms  DeleteObjects: 0.410100 ms)
+	Deserialize:            11.756 ms
+	Integration:            209.997 ms
+	Integration of assets:  0.006 ms
+	Thread Wait Time:       0.018 ms
+	Total Operation Time:   221.777 ms
+Unloading 70 unused Assets / (48.0 KB). Loaded Objects now: 6562.
+Memory consumption went from 162.8 MB to 162.7 MB.
+Total: 15.820300 ms (FindLiveObjects: 0.330700 ms CreateObjectMapping: 0.204700 ms MarkObjects: 14.996100 ms  DeleteObjects: 0.287100 ms)
 
 Script attached to 'HUDCanvas' in scene 'Assets/_Game/Scenes/Kitchen_Level_1.unity' is missing or no valid script is attached.
 Script attached to 'HUDCanvas' in scene 'Assets/_Game/Scenes/Kitchen_Level_1.unity' is missing or no valid script is attached.
 Opening scene 'Assets/_Game/Scenes/LevelSelect.unity'
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
 Loaded scene 'Assets/_Game/Scenes/LevelSelect.unity'
-	Deserialize:            1.429 ms
-	Integration:            215.807 ms
-	Integration of assets:  0.004 ms
-	Thread Wait Time:       0.054 ms
-	Total Operation Time:   217.294 ms
-Unloading 23 unused Assets / (0.8 MB). Loaded Objects now: 6500.
-Memory consumption went from 157.4 MB to 156.6 MB.
-Total: 15.374900 ms (FindLiveObjects: 0.325200 ms CreateObjectMapping: 0.215300 ms MarkObjects: 14.419900 ms  DeleteObjects: 0.412100 ms)
+	Deserialize:            1.167 ms
+	Integration:            198.087 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.029 ms
+	Total Operation Time:   199.286 ms
+Unloading 21 unused Assets / (0.7 MB). Loaded Objects now: 6495.
+Memory consumption went from 157.5 MB to 156.8 MB.
+Total: 13.603600 ms (FindLiveObjects: 0.303100 ms CreateObjectMapping: 0.200100 ms MarkObjects: 12.815000 ms  DeleteObjects: 0.284200 ms)
 
 Script attached to 'LevelSelectCanvas' in scene 'Assets/_Game/Scenes/LevelSelect.unity' is missing or no valid script is attached.
 Opening scene 'Assets/_Game/Scenes/MainMenu.unity'
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
 Loaded scene 'Assets/_Game/Scenes/MainMenu.unity'
-	Deserialize:            5.704 ms
-	Integration:            229.630 ms
+	Deserialize:            4.090 ms
+	Integration:            190.833 ms
 	Integration of assets:  0.004 ms
-	Thread Wait Time:       0.034 ms
-	Total Operation Time:   235.371 ms
-Unloading 2 unused Assets / (0.5 KB). Loaded Objects now: 6537.
-Memory consumption went from 156.3 MB to 156.3 MB.
-Total: 14.490800 ms (FindLiveObjects: 0.345200 ms CreateObjectMapping: 0.186500 ms MarkObjects: 13.889800 ms  DeleteObjects: 0.067100 ms)
+	Thread Wait Time:       0.043 ms
+	Total Operation Time:   194.970 ms
+Unloading 2 unused Assets / (0.5 KB). Loaded Objects now: 6532.
+Memory consumption went from 156.5 MB to 156.5 MB.
+Total: 13.852600 ms (FindLiveObjects: 0.388800 ms CreateObjectMapping: 0.297500 ms MarkObjects: 13.130600 ms  DeleteObjects: 0.034100 ms)
 
 Script attached to 'Canvas' in scene 'Assets/_Game/Scenes/MainMenu.unity' is missing or no valid script is attached.
 Opening scene 'Assets/_Game/Scenes/Results.unity'
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
 Loaded scene 'Assets/_Game/Scenes/Results.unity'
-	Deserialize:            1.759 ms
-	Integration:            213.964 ms
-	Integration of assets:  0.004 ms
-	Thread Wait Time:       0.028 ms
-	Total Operation Time:   215.755 ms
-Unloading 2 unused Assets / (0.5 KB). Loaded Objects now: 6510.
-Memory consumption went from 156.3 MB to 156.3 MB.
-Total: 15.008800 ms (FindLiveObjects: 0.600900 ms CreateObjectMapping: 0.197100 ms MarkObjects: 14.176200 ms  DeleteObjects: 0.033200 ms)
+	Deserialize:            1.656 ms
+	Integration:            181.322 ms
+	Integration of assets:  0.006 ms
+	Thread Wait Time:       0.068 ms
+	Total Operation Time:   183.052 ms
+Unloading 2 unused Assets / (0.5 KB). Loaded Objects now: 6505.
+Memory consumption went from 156.5 MB to 156.5 MB.
+Total: 14.599200 ms (FindLiveObjects: 0.276700 ms CreateObjectMapping: 0.221800 ms MarkObjects: 14.065200 ms  DeleteObjects: 0.034200 ms)
 
 Script attached to 'ResultsCanvas' in scene 'Assets/_Game/Scenes/Results.unity' is missing or no valid script is attached.
 
@@ -894,19 +1011,19 @@ Dependency assembly - Unity.VisualScripting.Antlr3.Runtime.dll
 Dependency assembly - I18N.West.dll
 
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 1 unused Assets / (0 B). Loaded Objects now: 6488.
-Memory consumption went from 161.9 MB to 161.9 MB.
-Total: 16.226400 ms (FindLiveObjects: 0.245200 ms CreateObjectMapping: 0.168600 ms MarkObjects: 15.773700 ms  DeleteObjects: 0.037200 ms)
+Unloading 1 unused Assets / (0 B). Loaded Objects now: 6483.
+Memory consumption went from 162.1 MB to 162.1 MB.
+Total: 12.929000 ms (FindLiveObjects: 0.227500 ms CreateObjectMapping: 0.158100 ms MarkObjects: 12.511500 ms  DeleteObjects: 0.030400 ms)
 
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 0 unused Assets / (0 B). Loaded Objects now: 6488.
-Memory consumption went from 161.9 MB to 161.9 MB.
-Total: 18.987200 ms (FindLiveObjects: 0.461000 ms CreateObjectMapping: 0.417700 ms MarkObjects: 18.063800 ms  DeleteObjects: 0.041100 ms)
+Unloading 0 unused Assets / (0 B). Loaded Objects now: 6483.
+Memory consumption went from 162.1 MB to 162.1 MB.
+Total: 14.466300 ms (FindLiveObjects: 0.250600 ms CreateObjectMapping: 0.158900 ms MarkObjects: 14.037400 ms  DeleteObjects: 0.016100 ms)
 
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 181 unused Assets / (150.8 MB). Loaded Objects now: 6488.
-Memory consumption went from 314.2 MB to 163.3 MB.
-Total: 42.095000 ms (FindLiveObjects: 0.344700 ms CreateObjectMapping: 0.245500 ms MarkObjects: 17.717400 ms  DeleteObjects: 23.785900 ms)
+Unloading 179 unused Assets / (150.8 MB). Loaded Objects now: 6483.
+Memory consumption went from 314.3 MB to 163.5 MB.
+Total: 39.434400 ms (FindLiveObjects: 0.461600 ms CreateObjectMapping: 0.451200 ms MarkObjects: 16.295300 ms  DeleteObjects: 22.224900 ms)
 
 Compiling shader "TextMeshPro/Sprite"
   Pass "Default" (vp)
@@ -915,7 +1032,7 @@ Compiling shader "TextMeshPro/Sprite"
     After settings filtering:   4
     After built-in stripping:   4
     After scriptable stripping: 4
-    Processed in 0.01 seconds
+    Processed in 0.00 seconds
   Pass "Default" (fp)
     Target graphics API: d3d11
     Full variant space:         4
@@ -1996,7 +2113,7 @@ Compiling shader "Hidden/Internal-UIRDefault"
     After built-in stripping:   40
     After scriptable stripping: 40
     Processed in 0.00 seconds
-  Pass  (vp, d3d11) finished in 0.00 seconds. Local cache hits 40 (0.02s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants.
+  Pass  (vp, d3d11) finished in 0.00 seconds. Local cache hits 40 (0.01s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants.
     Prepared data for serialisation in 0.00s
   Pass  (fp, d3d11) finished in 0.00 seconds. Local cache hits 40 (0.01s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants.
     Prepared data for serialisation in 0.00s
@@ -2791,32 +2908,44 @@ Compiling shader "Hidden/Physics2D/SDF_Point"
     Prepared data for serialisation in 0.00s
 Serialized binary data for shader Hidden/Physics2D/SDF_Point in 0.00s
     d3d11 (total internal programs: 2, unique: 2)
-Asset Pipeline Refresh (id=df710c632553664468459ce0e42e9da8): Total: 0.045 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=4d329634f01da2a4b8e42821da2b1054): Total: 0.040 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
 Default GameObject Tag: Player already registered
 Starting: C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --dagfile="Library/Bee/Player7aabe646.dag" --profile="Library/Bee/backend1.traceevents" Player
 WorkingDir: C:/Users/zhaoF/OneDrive/Documents/UnityProjects/CulinaryChaos
 DisplayProgressbar: Incremental Player Build
-ExitCode: 0 Duration: 0s331ms
-Refreshing native plugins compatible for Editor in 10.21 ms, found 2 plugins.
-Refreshing native plugins compatible for Editor in 8.07 ms, found 2 plugins.
+C:/Users/zhaoF/OneDrive/Documents/UnityProjects/CulinaryChaos/Library/PackageCache/com.unity.burst@973857688024/.Runtime\bcl.exe exited after 2925 ms.
+stdout:
+Starting 1 library requests
+Done
+stderr:
+
+ExitCode: 4 Duration: 5s600ms
+Starting: C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Data\netcorerun\netcorerun.exe "C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\WinPlayerBuildProgram.exe" "C:/Program Files/Unity/Hub/Editor/6000.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Bee;C:/Program Files/Unity/Hub/Editor/6000.3.7f1/Editor/Data/Tools/BuildPipeline" "Library/Bee/Player7aabe646.dag.json" "Library/Bee/Player7aabe646-inputdata.json" "Library\Bee\buildprogram0.traceevents"
+WorkingDir: C:/Users/zhaoF/OneDrive/Documents/UnityProjects/CulinaryChaos
+ExitCode: 0 Duration: 0s362ms
+Starting: C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --dagfile="Library/Bee/Player7aabe646.dag" --dagfilejson="Library\Bee\Player7aabe646.dag.json" --profile="Library/Bee/backend2.traceevents" Player
+WorkingDir: C:/Users/zhaoF/OneDrive/Documents/UnityProjects/CulinaryChaos
+ExitCode: 0 Duration: 0s135ms
+Refreshing native plugins compatible for Editor in 9.79 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 5.91 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Asset Pipeline Refresh (id=67063cc0723554640a08814899d5ecc8): Total: 0.091 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
-Refreshing native plugins compatible for Editor in 7.65 ms, found 2 plugins.
+Asset Pipeline Refresh (id=38a385e3e8a36cf4b96ec03ae7b138cd): Total: 0.080 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 5.87 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 
 -------------------------------------------------------------------------------
 Build Report
 Uncompressed usage by category (Percentages based on user generated assets only):
-Textures               10.9 mb	 92.1% 
+Textures               10.7 mb	 92.0% 
 Meshes                 0.0 kb	 0.0% 
 Animations             0.0 kb	 0.0% 
 Sounds                 0.0 kb	 0.0% 
-Shaders                185.4 kb	 1.5% 
-Other Assets           411.6 kb	 3.4% 
+Shaders                185.4 kb	 1.6% 
+Other Assets           411.2 kb	 3.5% 
 Levels                 30.3 kb	 0.3% 
-File headers           67.6 kb	 0.6% 
-Total User Assets      11.8 mb	 100.0% 
-Complete build size    100.1 mb
+File headers           67.5 kb	 0.6% 
+Total User Assets      11.6 mb	 100.0% 
+Complete build size    99.9 mb
 Used Assets and files from the Resources folder, sorted by uncompressed size:
  5.9 mb	 5.9% Assets/Resources/UI/MainMenuBackground.png
  2.7 mb	 2.7% Built-in Texture2D: Splash Screen Unity Logo
@@ -2825,7 +2954,6 @@ Used Assets and files from the Resources folder, sorted by uncompressed size:
  344.5 kb	 0.3% Assets/TextMesh Pro/Fonts/LiberationSans.ttf
  341.5 kb	 0.3% Assets/TextMesh Pro/Sprites/EmojiOne.png
  179.5 kb	 0.2% Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
- 176.6 kb	 0.2% Assets/Resources/UI/Logo.png
  64.6 kb	 0.1% Assets/Resources/UI/Kitchen/Modern_bg.png
  17.1 kb	 0.0% Assets/Resources/UI/Heroes/Alchemist_idle.png
  17.0 kb	 0.0% Assets/Resources/UI/Heroes/IronWill_idle.png
@@ -4684,7 +4812,6 @@ Used Assets and files from the Resources folder, sorted by uncompressed size:
  0.1 kb	 0.0% Packages/com.unity.2d.common/Runtime/UTess2D/Smoothen.cs
  0.1 kb	 0.0% Packages/com.unity.2d.common/Runtime/UTess2D/Refinery.cs
  0.1 kb	 0.0% Packages/com.unity.2d.common/Runtime/UAi2D/KMeans.cs
- 0.1 kb	 0.0% Assets/_Game/Scripts/UI/NavTabEntryAnimation.cs
  0.1 kb	 0.0% Assets/_Game/Scripts/UI/ButtonSpringEffect.cs
  0.1 kb	 0.0% Assets/_Game/Scripts/UI/ButtonBounceEffect.cs
  0.1 kb	 0.0% Assets/_Game/Scripts/Input/TouchInputProvider.cs
@@ -4879,9 +5006,7 @@ Used Assets and files from the Resources folder, sorted by uncompressed size:
  0.1 kb	 0.0% Packages/com.unity.2d.tilemap.extras/Runtime/Tiles/AutoTile/AutoTile.cs
  0.1 kb	 0.0% Packages/com.unity.2d.spriteshape/Runtime/Spline.cs
  0.1 kb	 0.0% Assets/_Game/Scripts/Utils/SafeAreaFitter.cs
- 0.1 kb	 0.0% Assets/_Game/Scripts/UI/TMPInitializer.cs
  0.1 kb	 0.0% Assets/_Game/Scripts/UI/ResultsScreenUI.cs
- 0.1 kb	 0.0% Assets/_Game/Scripts/UI/PulseGlowEffect.cs
  0.1 kb	 0.0% Assets/_Game/Scripts/UI/LevelSelectUI.cs
  0.1 kb	 0.0% Assets/_Game/Scripts/UI/IngredientShopUI.cs
  0.1 kb	 0.0% Assets/_Game/Scripts/UI/ConnectionGateUI.cs
@@ -5045,7 +5170,6 @@ Used Assets and files from the Resources folder, sorted by uncompressed size:
  0.1 kb	 0.0% Packages/com.unity.burst/Runtime/Intrinsics/v256.cs
  0.1 kb	 0.0% Packages/com.unity.burst/Runtime/Intrinsics/v128.cs
  0.1 kb	 0.0% Packages/com.unity.burst/Runtime/Intrinsics/Arm/NEON.cs
- 0.1 kb	 0.0% Assets/_Game/Scripts/UI/UISkew.cs
  0.1 kb	 0.0% Assets/_Game/Scripts/UI/ShopUI.cs
  0.1 kb	 0.0% Packages/com.unity.ugui/Runtime/UGUI/UI/Core/Text.cs
  0.1 kb	 0.0% Packages/com.unity.ugui/Runtime/UGUI/UI/Core/Misc.cs
@@ -5055,25 +5179,25 @@ Used Assets and files from the Resources folder, sorted by uncompressed size:
  0.1 kb	 0.0% Assets/Resources/BillingMode.json
 -------------------------------------------------------------------------------
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 170 unused Assets / (0.9 MB). Loaded Objects now: 6518.
+Unloading 166 unused Assets / (0.8 MB). Loaded Objects now: 6513.
 Memory consumption went from 168.4 MB to 167.6 MB.
-Total: 17.608700 ms (FindLiveObjects: 0.508900 ms CreateObjectMapping: 0.370600 ms MarkObjects: 15.925300 ms  DeleteObjects: 0.801300 ms)
+Total: 28.168400 ms (FindLiveObjects: 0.699000 ms CreateObjectMapping: 1.054000 ms MarkObjects: 24.989200 ms  DeleteObjects: 1.423400 ms)
 
 DisplayProgressNotification: Build Successful
 Build Finished, Result: Success.
-Total cache size 194410156
-Total cache size after purge 194410156, took 00:00:00.4795870
-##utp:{"type":"PlayerBuildInfo","version":2,"phase":"Immediate","time":1771051184115,"processId":27280,"steps":[{"description":"Preprocess Player","duration":84},{"description":"Prepare For Build","duration":10},{"description":"ProducePlayerScriptAssemblies","duration":2733},{"description":"Verify Build setup","duration":634},{"description":"Prepare assets for target platform","duration":242},{"description":"Prepare splash screen","duration":1},{"description":"Building scenes","duration":1618},{"description":"Build scripts DLLs","duration":46},{"description":"Build GlobalGameManagers file","duration":204},{"description":"Writing asset files","duration":178},{"description":"Building Resources/unity_builtin_extra","duration":86},{"description":"Write data build dirty tracking information","duration":280},{"description":"Postprocess built player","duration":1492}],"duration":7608}
+Total cache size 107116900
+Total cache size after purge 107116900, took 00:00:00.2644844
+##utp:{"type":"PlayerBuildInfo","version":2,"phase":"Immediate","time":1770789582341,"processId":32324,"steps":[{"description":"Preprocess Player","duration":136},{"description":"Prepare For Build","duration":9},{"description":"ProducePlayerScriptAssemblies","duration":7002},{"description":"Verify Build setup","duration":428},{"description":"Prepare assets for target platform","duration":5},{"description":"Prepare splash screen","duration":1},{"description":"Building scenes","duration":1345},{"description":"Build scripts DLLs","duration":42},{"description":"Build GlobalGameManagers file","duration":144},{"description":"Writing asset files","duration":140},{"description":"Building Resources/unity_builtin_extra","duration":62},{"description":"Write data build dirty tracking information","duration":195},{"description":"Postprocess built player","duration":7086}],"duration":16595}
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
 Loaded scene 'Temp/__Backupscenes/0.backup'
-	Deserialize:            0.882 ms
-	Integration:            325.776 ms
-	Integration of assets:  0.005 ms
-	Thread Wait Time:       0.047 ms
-	Total Operation Time:   326.709 ms
-Unloading 0 unused Assets / (3.7 MB). Loaded Objects now: 6513.
-Memory consumption went from 167.0 MB to 163.3 MB.
-Total: 24.107800 ms (FindLiveObjects: 0.452700 ms CreateObjectMapping: 0.183200 ms MarkObjects: 23.386800 ms  DeleteObjects: 0.081600 ms)
+	Deserialize:            0.561 ms
+	Integration:            223.019 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.016 ms
+	Total Operation Time:   223.598 ms
+Unloading 0 unused Assets / (3.7 MB). Loaded Objects now: 6508.
+Memory consumption went from 167.0 MB to 163.4 MB.
+Total: 15.780100 ms (FindLiveObjects: 0.424200 ms CreateObjectMapping: 0.322200 ms MarkObjects: 15.002500 ms  DeleteObjects: 0.029800 ms)
 
 Batchmode quit successfully invoked - shutting down!
 [Physics::Module] Cleanup current backend.
@@ -5085,6 +5209,5 @@ Input System module state changed to: Shutdown.
 [Licensing::IpcConnector] LicenseClient-zhaoF channel disconnected successfully.
 AcceleratorClientConnectionCallback - disconnected - :0
 Cleanup mono
-debugger-agent: Unable to listen on 2956
 Exiting batchmode successfully now!
 Exiting without the bug reporter. Application will terminate with return code 0

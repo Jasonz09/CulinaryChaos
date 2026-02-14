@@ -57,5 +57,10 @@ namespace IOChef.Economy
         /// Hero ID this cosmetic applies to (for hero skins).
         /// </summary>
         public string targetHeroId;
+
+        /// <summary>
+        /// Whether this item is featured in the shop sidebar.
+        /// </summary>
+        public bool isFeatured;
     }
 }

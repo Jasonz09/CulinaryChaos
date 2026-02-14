@@ -520,7 +520,7 @@ namespace IOChef.UI
             {
                 orderTexts[i] = MakeTMP(orderWrap, $"Ord{i}", "", 17, COL_WHITE, FontStyles.Normal);
                 orderTexts[i].alignment = TextAlignmentOptions.Left;
-                orderTexts[i].enableWordWrapping = true;
+                orderTexts[i].textWrappingMode = TextWrappingModes.Normal;
                 var le = orderTexts[i].gameObject.AddComponent<LayoutElement>();
                 le.preferredHeight = 44;
                 orderTexts[i].gameObject.SetActive(false);
@@ -744,7 +744,7 @@ namespace IOChef.UI
             tmp.color = c;
             tmp.fontStyle = style;
             tmp.alignment = TextAlignmentOptions.Center;
-            tmp.enableWordWrapping = false;
+            tmp.textWrappingMode = TextWrappingModes.NoWrap;
             tmp.raycastTarget = false;
             return tmp;
         }

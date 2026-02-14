@@ -31,11 +31,14 @@ namespace IOChef.UI
             go.transform.SetParent(parent, false);
             var rt = go.GetComponent<RectTransform>();
             var tmp = go.GetComponent<TextMeshProUGUI>();
-            tmp.text = text;
-            tmp.fontSize = size;
-            tmp.color = color;
-            tmp.fontStyle = style;
-            tmp.enableWordWrapping = true;
+            if (tmp != null)
+            {
+                tmp.text = text;
+                tmp.fontSize = size;
+                tmp.color = color;
+                tmp.fontStyle = style;
+                tmp.textWrappingMode = TextWrappingModes.Normal;
+            }
             return rt;
         }
 
@@ -100,26 +103,35 @@ namespace IOChef.UI
             return _roundedSprite;
         }
 
-        private void MakeTextButton(RectTransform parent, string label, int fontSize, Color color, System.Action onClick)
+        private RectTransform CreateMenuTextButton(RectTransform parent, string label, int fontSize, Color color, System.Action onClick)
         {
-            var go = new GameObject("Btn_" + label, typeof(RectTransform), typeof(Image));
+            var go = new GameObject("Btn_" + label, typeof(RectTransform));
             go.transform.SetParent(parent, false);
             var rt = go.GetComponent<RectTransform>();
             
-            // Transparent image for click target area
-            var img = go.GetComponent<Image>();
-            img.color = Color.clear;
-
-            // Button wired to the image
-            var btn = go.AddComponent<Button>();
-            btn.targetGraphic = img;
-            btn.onClick.AddListener(() => onClick?.Invoke());
-            
-            // Text
+            // Text object
             var tRT = MakeText(rt, "Content", label, fontSize, color, FontStyles.Bold);
             var tmp = tRT.GetComponent<TextMeshProUGUI>();
             tmp.alignment = TextAlignmentOptions.Center;
             Stretch(tRT);
+
+            // Button component (target the Text for color tint)
+            var btn = go.AddComponent<Button>();
+            btn.targetGraphic = tmp;
+            btn.onClick.AddListener(() => onClick?.Invoke());
+            
+            // Orange click effect
+            ColorBlock cb = btn.colors;
+            cb.normalColor = Color.white; // Multiplies with the base text color
+            cb.highlightedColor = new Color(1f, 1f, 1f, 1f); 
+            cb.pressedColor = new Color(1f, 0.6f, 0.0f); // Orange tint when pressed
+            cb.selectedColor = cb.normalColor;
+            cb.disabledColor = new Color(1f, 1f, 1f, 0.5f);
+            cb.colorMultiplier = 1f;
+            cb.fadeDuration = 0.1f;
+            btn.colors = cb;
+
+            return rt;
         }
 
         private void MakeChunkyButton(RectTransform parent, string label, Color face, Color shadow, Color textColor, int fontSize, int height, System.Action onClick)
@@ -131,15 +143,15 @@ namespace IOChef.UI
             var img = go.GetComponent<Image>();
             img.sprite = GetRoundedSprite(); // Use rounded sprite
             img.type = Image.Type.Sliced;
-            img.color = face;
+            
+            // IMPORTANT: Set base image color to WHITE so ColorBlock can control the color fully
+            img.color = Color.white;
 
             // Neumorphic Soft Shadows
-            // Darker shadow bottom-right
             var s1 = go.AddComponent<Shadow>();
-            s1.effectColor = new Color(shadow.r, shadow.g, shadow.b, 0.5f); // Use provided shadow color but softer
+            s1.effectColor = new Color(shadow.r, shadow.g, shadow.b, 0.5f);
             s1.effectDistance = new Vector2(3, -3);
 
-            // Highlight top-left (simulated by a lighter shadow)
             var s2 = go.AddComponent<Shadow>();
             s2.effectColor = new Color(1f, 1f, 1f, 0.3f);
             s2.effectDistance = new Vector2(-2, 2);
@@ -147,8 +159,20 @@ namespace IOChef.UI
             var btn = go.GetComponent<Button>();
             btn.onClick.AddListener(() => onClick?.Invoke());
             
+            // Button Colors - Orange Click Effect
+            ColorBlock cb = btn.colors;
+            cb.normalColor = face;
+            cb.highlightedColor = face * 1.1f; // Slightly lighter on hover
+            cb.pressedColor = new Color(1f, 0.5f, 0.0f); // Orange click!
+            cb.selectedColor = face;
+            cb.disabledColor = Color.gray;
+            cb.colorMultiplier = 1f;
+            cb.fadeDuration = 0.1f;
+            btn.colors = cb;
+            
             // Text Label
             var txtRT = MakeText(rt, "Label", label, fontSize, textColor, FontStyles.Bold);
+            Stretch(txtRT); txtRT.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
             
             // Layout
             AddLE(rt.gameObject, height);
@@ -240,6 +264,60 @@ namespace IOChef.UI
             rt.sizeDelta = size;
             rt.anchoredPosition = offset;
             return rt;
+        }
+
+        private void AddSkew(GameObject go, float x)
+        {
+            var s = go.GetComponent<UISkew>() ?? go.AddComponent<UISkew>();
+            s.skewX = x;
+        }
+
+        /// <summary>
+        /// Creates a button with a skewed parallelogram shape.
+        /// </summary>
+        private RectTransform MakeSkewedButton(RectTransform parent, string label, Color face, Color shadow, Color textColor, int fontSize, int width, int height, System.Action onClick, float skewX = -0.2f)
+        {
+            var go = new GameObject("BtnSkew_" + label, typeof(RectTransform), typeof(Image), typeof(Button));
+            go.transform.SetParent(parent, false);
+            LayoutElement le = go.AddComponent<LayoutElement>();
+            if (width > 0) le.preferredWidth = width;
+            if (height > 0) le.preferredHeight = height;
+
+            var img = go.GetComponent<Image>();
+            // img.color = face; // Handled below with ColorBlock logic
+            
+            AddSkew(go, skewX);
+            
+            // Shadow
+            if (shadow != Color.clear)
+            {
+                var s = go.AddComponent<Shadow>();
+                s.effectColor = shadow;
+                s.effectDistance = new Vector2(2, -2);
+            }
+
+            var btn = go.GetComponent<Button>();
+            btn.onClick.AddListener(() => onClick?.Invoke());
+
+            // Orange Click Effect
+            ColorBlock cb = btn.colors;
+            cb.highlightedColor = new Color(1.1f, 1.1f, 1.1f, 1f); 
+            cb.pressedColor = new Color(1f, 0.6f, 0.0f); // Orange tint
+            cb.selectedColor = Color.white;
+            cb.colorMultiplier = 1f;
+            
+            // Set base colors
+            img.color = Color.white;
+            cb.normalColor = face;
+            btn.colors = cb;
+
+            // Text
+            var tRT = MakeText(go.GetComponent<RectTransform>(), "Label", label, fontSize, textColor, FontStyles.Bold);
+            var tmp = tRT.GetComponent<TextMeshProUGUI>();
+            tmp.alignment = TextAlignmentOptions.Center;
+            Stretch(tRT);
+
+            return go.GetComponent<RectTransform>();
         }
     }
 }

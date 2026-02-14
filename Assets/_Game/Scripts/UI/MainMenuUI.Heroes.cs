@@ -264,7 +264,7 @@ namespace IOChef.UI
                 new Color(0.45f, 0.32f, 0.15f), FontStyles.Italic);
             AddLE(abilDescRT.gameObject, 56);
             heroDetailAbilityDesc = abilDescRT.GetComponent<TextMeshProUGUI>();
-            heroDetailAbilityDesc.enableWordWrapping = true;
+            heroDetailAbilityDesc.textWrappingMode = TextWrappingModes.Normal;
 
             // Stats container
             AddLayoutText(box, "StatsH", "STATS", 22, COL_BTN_TEXT, FontStyles.Bold, 30);
@@ -325,7 +325,7 @@ namespace IOChef.UI
                 heroDetailName.text = unlocked ? heroName : $"{heroName} (LOCKED)";
                 heroDetailName.color = unlocked ? COL_BTN_TEXT : COL_DISABLED;
                 heroDetailName.overflowMode = TextOverflowModes.Ellipsis;
-                heroDetailName.enableWordWrapping = false;
+                heroDetailName.textWrappingMode = TextWrappingModes.NoWrap;
             }
 
             // Rarity
@@ -668,7 +668,7 @@ namespace IOChef.UI
             var sNameTMP = nameRT.GetComponent<TextMeshProUGUI>();
             sNameTMP.alignment = TextAlignmentOptions.Left;
             sNameTMP.overflowMode = TextOverflowModes.Ellipsis;
-            sNameTMP.enableWordWrapping = false;
+            sNameTMP.textWrappingMode = TextWrappingModes.NoWrap;
 
             var rarStr = $"{hero.rarity} {GetRarityStars(hero.rarity)} | Lv.{level}";
             var rarTextRT = MakeText(infoRT, "SRar", rarStr, 18, rarColor, FontStyles.Bold);
@@ -761,7 +761,7 @@ namespace IOChef.UI
             var nameTMP = nameRT.GetComponent<TextMeshProUGUI>();
             nameTMP.alignment = TextAlignmentOptions.Left;
             nameTMP.overflowMode = TextOverflowModes.Ellipsis;
-            nameTMP.enableWordWrapping = false;
+            nameTMP.textWrappingMode = TextWrappingModes.NoWrap;
 
             // Rarity + stars
             var rarLbl = $"{hero.rarity} {GetRarityStars(hero.rarity)}";

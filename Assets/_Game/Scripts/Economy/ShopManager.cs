@@ -145,6 +145,27 @@ namespace IOChef.Economy
         }
 
         /// <summary>
+        /// Gets the featured cosmetic item. Returns the first item marked as featured,
+        /// or falls back to the first unowned item, or any item if all are owned.
+        /// </summary>
+        /// <returns>The featured cosmetic item, or null if no cosmetics exist.</returns>
+        public CosmeticItem GetFeaturedItem()
+        {
+            if (allCosmetics == null || allCosmetics.Count == 0) return null;
+
+            // Try to find explicitly featured item
+            var featured = allCosmetics.Find(c => c.isFeatured);
+            if (featured != null) return featured;
+
+            // Fallback to first unowned item
+            featured = allCosmetics.Find(c => !_ownedCosmetics.Contains(c.cosmeticId));
+            if (featured != null) return featured;
+
+            // Fallback to any item
+            return allCosmetics[0];
+        }
+
+        /// <summary>
         /// Checks whether the player owns a specific cosmetic.
         /// </summary>
         /// <param name="cosmeticId">The unique identifier of the cosmetic.</param>

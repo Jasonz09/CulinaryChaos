@@ -621,7 +621,7 @@ namespace IOChef.UI
             tmp.color = COL_BTN;
             tmp.fontStyle = FontStyles.Bold;
             tmp.alignment = TextAlignmentOptions.Bottom;
-            tmp.enableWordWrapping = true;
+            tmp.textWrappingMode = TextWrappingModes.Normal;
             tmp.raycastTarget = false;
 
             StartCoroutine(PulseTutorialArrow());
@@ -955,7 +955,7 @@ namespace IOChef.UI
             var t = go.GetComponent<TextMeshProUGUI>();
             t.text = text; t.fontSize = size; t.color = c;
             t.fontStyle = style; t.alignment = TextAlignmentOptions.Center;
-            t.enableWordWrapping = true;
+            t.textWrappingMode = TextWrappingModes.Normal;
             return go.GetComponent<RectTransform>();
         }
 
