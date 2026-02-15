@@ -500,17 +500,12 @@ namespace IOChef.UI
             navHL.childControlHeight = true; navHL.childForceExpandHeight = true;
             navHL.padding = new RectOffset(4, 4, 0, 0);
 
-            // ── Nav Button Builder (tab-style with orange underline for active) ──
-            void MakeNavBtn(string label, System.Action onClick, bool active, bool disabled)
+            // ── Nav Button Builder (tab-style with flash underline on click) ──
+            void MakeNavBtn(string label, System.Action onClick, bool disabled)
             {
-                Color txtColor;
-                if (active) {
-                    txtColor = Color.white;
-                } else if (disabled) {
-                    txtColor = new Color(0.45f, 0.47f, 0.52f);
-                } else {
-                    txtColor = new Color(0.72f, 0.74f, 0.78f);
-                }
+                Color txtColor = disabled
+                    ? new Color(0.45f, 0.47f, 0.52f)
+                    : new Color(0.72f, 0.74f, 0.78f);
 
                 // Transparent background — no pill shape
                 var tab = MakePanel(navContainer, label + "Btn", Color.clear);
@@ -521,17 +516,19 @@ namespace IOChef.UI
                 tmp.alignment = TextAlignmentOptions.Center;
                 tmp.textWrappingMode = TextWrappingModes.NoWrap;
 
-                // Orange underline indicator for active tab
-                if (active)
-                {
-                    var underline = MakePanel(tab, "Underline", new Color(1f, 0.55f, 0.1f, 1f));
-                    underline.anchorMin = new Vector2(0.15f, 0);
-                    underline.anchorMax = new Vector2(0.85f, 0);
-                    underline.pivot = new Vector2(0.5f, 0);
-                    underline.sizeDelta = new Vector2(0, 3);
-                    underline.anchoredPosition = new Vector2(0, 4);
-                    underline.GetComponent<Image>().sprite = GetRoundedSprite();
-                }
+                // Orange underline — hidden, flashes on click then fades out
+                var underline = MakePanel(tab, "Underline", new Color(1f, 0.55f, 0.1f, 1f));
+                underline.anchorMin = new Vector2(0.1f, 0);
+                underline.anchorMax = new Vector2(0.9f, 0);
+                underline.pivot = new Vector2(0.5f, 0);
+                underline.sizeDelta = new Vector2(0, 3);
+                underline.anchoredPosition = new Vector2(0, 4);
+                underline.GetComponent<Image>().sprite = GetRoundedSprite();
+                // Underline starts transparent; NavTabClickFlash controls alpha on hover/press
+
+                // Hover/press controller — shows underline + scales text
+                var flash = tab.gameObject.AddComponent<NavTabClickFlash>();
+                flash.Init(underline.gameObject, txt.GetComponent<RectTransform>());
 
                 var btn = tab.gameObject.AddComponent<Button>();
                 btn.targetGraphic = tab.GetComponent<Image>();
@@ -540,7 +537,10 @@ namespace IOChef.UI
 
                 if (!disabled)
                 {
-                    btn.onClick.AddListener(() => onClick?.Invoke());
+                    btn.onClick.AddListener(() =>
+                    {
+                        onClick?.Invoke();
+                    });
                     ColorBlock cb = btn.colors;
                     cb.normalColor = Color.white;
                     cb.highlightedColor = new Color(1.15f, 1.15f, 1.15f);
@@ -559,120 +559,127 @@ namespace IOChef.UI
                 }
             }
 
-            MakeNavBtn("HEROES",  OnHeroesClicked,     true,  false);
-            MakeNavBtn("PETS",    () => { },            false, true);   // disabled
-            MakeNavBtn("RECIPES", OnRecipeBookClicked,  false, false);
-            MakeNavBtn("SHOP",    OnShopClicked,        false, false);
+            MakeNavBtn("HEROES",  OnHeroesClicked,     false);
+            MakeNavBtn("PETS",    () => { },            true);   // disabled
+            MakeNavBtn("RECIPES", OnRecipeBookClicked,  true);   // disabled
+            MakeNavBtn("SHOP",    OnShopClicked,        false);
 
 
-            // ─── RIGHT: Currency + Level + Settings ───
+            // ─── RIGHT: Coin Display + Player Profile (matching reference) ───
             var profileArea = MakePanel(topBar, "ProfileArea", Color.clear);
-            profileArea.anchorMin = new Vector2(0.68f, 0); profileArea.anchorMax = new Vector2(1, 1);
+            profileArea.anchorMin = new Vector2(0.62f, 0); profileArea.anchorMax = new Vector2(1, 1);
             profileArea.offsetMin = new Vector2(0, 0);
-            profileArea.offsetMax = new Vector2(-12, 0);
+            profileArea.offsetMax = new Vector2(-14, 0);
 
             var profHL = profileArea.gameObject.AddComponent<HorizontalLayoutGroup>();
             profHL.childAlignment = TextAnchor.MiddleRight;
-            profHL.spacing = 8;
+            profHL.spacing = 12;
             profHL.childControlWidth = false; profHL.childForceExpandWidth = false;
             profHL.padding = new RectOffset(0, 0, 6, 6);
 
-            // ── Coins chip ──
-            var coinChip = MakePanel(profileArea, "CoinChip", new Color(0.16f, 0.17f, 0.20f, 1f));
+            // ── Coin display chip: [coin icon] 2280 [+] ──
+            var coinChip = MakePanel(profileArea, "CoinChip", new Color(0.14f, 0.15f, 0.19f, 1f));
             coinChip.GetComponent<Image>().sprite = GetRoundedSprite();
             var coinChipLE = coinChip.gameObject.AddComponent<LayoutElement>();
-            coinChipLE.preferredWidth = 100; coinChipLE.preferredHeight = 34;
+            coinChipLE.preferredWidth = 140; coinChipLE.preferredHeight = 38;
 
             var coinHL = coinChip.gameObject.AddComponent<HorizontalLayoutGroup>();
-            coinHL.spacing = 5; coinHL.childAlignment = TextAnchor.MiddleCenter;
+            coinHL.spacing = 6; coinHL.childAlignment = TextAnchor.MiddleCenter;
             coinHL.childControlWidth = false; coinHL.childForceExpandWidth = false;
-            coinHL.padding = new RectOffset(10, 10, 0, 0);
+            coinHL.padding = new RectOffset(8, 6, 0, 0);
 
-            var coinDot = MakePanel(coinChip, "Dot", new Color(1f, 0.78f, 0.2f, 1f));
-            coinDot.GetComponent<Image>().sprite = GetRoundedSprite();
-            var cdLE = coinDot.gameObject.AddComponent<LayoutElement>();
-            cdLE.preferredWidth = 14; cdLE.preferredHeight = 14;
+            // Gold coin icon (circular)
+            var coinIcon = MakePanel(coinChip, "CoinIcon", new Color(1f, 0.78f, 0.12f, 1f));
+            coinIcon.GetComponent<Image>().sprite = GetRoundedSprite();
+            var ciLE = coinIcon.gameObject.AddComponent<LayoutElement>();
+            ciLE.preferredWidth = 22; ciLE.preferredHeight = 22;
+            // Add $ symbol inside coin
+            var coinSymbol = MakeText(coinIcon, "S", "$", 11, new Color(0.75f, 0.55f, 0f), FontStyles.Bold);
+            Stretch(coinSymbol);
+            coinSymbol.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
 
-            mainMenuCoinsLabel = MakeText(coinChip, "Val", "1,050", 13, new Color(1f, 0.92f, 0.6f), FontStyles.Bold).GetComponent<TextMeshProUGUI>();
+            // Coin amount
+            mainMenuCoinsLabel = MakeText(coinChip, "Val", "2,280", 15, new Color(1f, 0.95f, 0.75f), FontStyles.Bold).GetComponent<TextMeshProUGUI>();
             mainMenuCoinsLabel.alignment = TextAlignmentOptions.MidlineLeft;
             mainMenuCoinsLabel.textWrappingMode = TextWrappingModes.NoWrap;
             var cValLE = mainMenuCoinsLabel.gameObject.AddComponent<LayoutElement>();
             cValLE.preferredWidth = 60;
 
-            // ── Gems chip ──
-            var gemChip = MakePanel(profileArea, "GemChip", new Color(0.16f, 0.17f, 0.20f, 1f));
-            gemChip.GetComponent<Image>().sprite = GetRoundedSprite();
-            var gemChipLE = gemChip.gameObject.AddComponent<LayoutElement>();
-            gemChipLE.preferredWidth = 90; gemChipLE.preferredHeight = 34;
+            // Green "+" add button
+            var addBtn = MakePanel(coinChip, "AddBtn", new Color(0.22f, 0.72f, 0.28f, 1f));
+            addBtn.GetComponent<Image>().sprite = GetRoundedSprite();
+            var abLE = addBtn.gameObject.AddComponent<LayoutElement>();
+            abLE.preferredWidth = 24; abLE.preferredHeight = 24;
+            var addBtnTxt = MakeText(addBtn, "Plus", "+", 16, Color.white, FontStyles.Bold);
+            Stretch(addBtnTxt);
+            addBtnTxt.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
+            var addBtnBtn = addBtn.gameObject.AddComponent<Button>();
+            addBtnBtn.targetGraphic = addBtn.GetComponent<Image>();
+            addBtnBtn.transition = Selectable.Transition.ColorTint;
+            addBtnBtn.onClick.AddListener(OnShopClicked); // opens shop to buy coins
+            ColorBlock abCB = addBtnBtn.colors;
+            abCB.normalColor = Color.white;
+            abCB.highlightedColor = new Color(1.1f, 1.1f, 1.1f);
+            abCB.pressedColor = new Color(0.85f, 0.85f, 0.85f);
+            abCB.selectedColor = Color.white;
+            abCB.colorMultiplier = 1f;
+            abCB.fadeDuration = 0.1f;
+            addBtnBtn.colors = abCB;
 
-            var gemHL = gemChip.gameObject.AddComponent<HorizontalLayoutGroup>();
-            gemHL.spacing = 5; gemHL.childAlignment = TextAnchor.MiddleCenter;
-            gemHL.childControlWidth = false; gemHL.childForceExpandWidth = false;
-            gemHL.padding = new RectOffset(10, 10, 0, 0);
+            // ── Player Profile button: [avatar icon] PLAYER PROFILE ──
+            var profBtn = MakePanel(profileArea, "PlayerProfileBtn", new Color(0.14f, 0.15f, 0.19f, 1f));
+            profBtn.GetComponent<Image>().sprite = GetRoundedSprite();
+            var profBtnLE = profBtn.gameObject.AddComponent<LayoutElement>();
+            profBtnLE.preferredWidth = 170; profBtnLE.preferredHeight = 38;
 
-            var gemDot = MakePanel(gemChip, "Dot", new Color(0.4f, 0.7f, 1f, 1f));
-            gemDot.GetComponent<Image>().sprite = GetRoundedSprite();
-            var gdLE = gemDot.gameObject.AddComponent<LayoutElement>();
-            gdLE.preferredWidth = 14; gdLE.preferredHeight = 14;
+            var profBtnHL = profBtn.gameObject.AddComponent<HorizontalLayoutGroup>();
+            profBtnHL.spacing = 8; profBtnHL.childAlignment = TextAnchor.MiddleCenter;
+            profBtnHL.childControlWidth = false; profBtnHL.childForceExpandWidth = false;
+            profBtnHL.padding = new RectOffset(12, 12, 0, 0);
 
-            mainMenuGemsLabel = MakeText(gemChip, "Val", "100", 13, new Color(0.7f, 0.9f, 1f), FontStyles.Bold).GetComponent<TextMeshProUGUI>();
-            mainMenuGemsLabel.alignment = TextAlignmentOptions.MidlineLeft;
-            mainMenuGemsLabel.textWrappingMode = TextWrappingModes.NoWrap;
-            var gValLE = mainMenuGemsLabel.gameObject.AddComponent<LayoutElement>();
-            gValLE.preferredWidth = 50;
+            // Avatar circle icon
+            var avatarIcon = MakePanel(profBtn, "AvatarIcon", new Color(0.35f, 0.40f, 0.50f, 1f));
+            avatarIcon.GetComponent<Image>().sprite = GetRoundedSprite();
+            var avLE = avatarIcon.gameObject.AddComponent<LayoutElement>();
+            avLE.preferredWidth = 24; avLE.preferredHeight = 24;
+            var avatarSymbol = MakeText(avatarIcon, "Av", "\u263A", 14, new Color(0.8f, 0.85f, 0.95f), FontStyles.Normal);
+            Stretch(avatarSymbol);
+            avatarSymbol.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
 
-            // ── Level badge ──
-            var levelBadge = MakePanel(profileArea, "LevelBadge", new Color(0.16f, 0.17f, 0.20f, 1f));
-            levelBadge.GetComponent<Image>().sprite = GetRoundedSprite();
-            var lbLE = levelBadge.gameObject.AddComponent<LayoutElement>();
-            lbLE.preferredWidth = 56; lbLE.preferredHeight = 34;
+            // "PLAYER PROFILE" label
+            var profLabel = MakeText(profBtn, "Label", "PLAYER PROFILE", 12, new Color(0.82f, 0.84f, 0.88f), FontStyles.Bold);
+            profLabel.GetComponent<TextMeshProUGUI>().textWrappingMode = TextWrappingModes.NoWrap;
+            profLabel.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.MidlineLeft;
+            var plLE = profLabel.gameObject.AddComponent<LayoutElement>();
+            plLE.preferredWidth = 110;
 
-            var lbHL = levelBadge.gameObject.AddComponent<HorizontalLayoutGroup>();
-            lbHL.childAlignment = TextAnchor.MiddleCenter;
-            lbHL.spacing = 2;
-            lbHL.padding = new RectOffset(6, 6, 0, 0);
-            lbHL.childControlWidth = false; lbHL.childForceExpandWidth = false;
-
-            var lvlLbl = MakeText(levelBadge, "Lbl", "LV", 10, new Color(0.55f, 0.58f, 0.65f), FontStyles.Bold);
-            var lvlLblLE = lvlLbl.gameObject.AddComponent<LayoutElement>();
-            lvlLblLE.preferredWidth = 18;
-            lvlLbl.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.MidlineRight;
-
-            playerLevelLabel = MakeText(levelBadge, "Num", "69", 16, new Color(0.5f, 0.85f, 1f), FontStyles.Bold).GetComponent<TextMeshProUGUI>();
-            playerLevelLabel.alignment = TextAlignmentOptions.MidlineLeft;
-            playerLevelLabel.textWrappingMode = TextWrappingModes.NoWrap;
-            var plNumLE = playerLevelLabel.gameObject.AddComponent<LayoutElement>();
-            plNumLE.preferredWidth = 26;
-
-            // Hidden fill bar reference (kept for compatibility)
-            var hiddenFill = MakePanel(levelBadge, "Fill", Color.clear);
-            hiddenFill.gameObject.SetActive(false);
-            playerLevelFillBar = hiddenFill.GetComponent<Image>();
-
-            // ── Settings button ──
-            var setBtn = MakePanel(profileArea, "SettingsBtn", new Color(0.16f, 0.17f, 0.20f, 1f));
-            setBtn.GetComponent<Image>().sprite = GetRoundedSprite();
-            var sBtnLE = setBtn.gameObject.AddComponent<LayoutElement>();
-            sBtnLE.preferredWidth = 36; sBtnLE.preferredHeight = 34;
-            var setBtnIcon = MakeText(setBtn, "Icon", "SET", 10, new Color(0.65f, 0.68f, 0.72f), FontStyles.Bold);
-            Stretch(setBtnIcon);
-            setBtnIcon.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
-            var setBtnBtn = setBtn.gameObject.AddComponent<Button>();
-            setBtnBtn.targetGraphic = setBtn.GetComponent<Image>();
-            setBtnBtn.onClick.AddListener(OnSettingsClicked);
-            setBtnBtn.transition = Selectable.Transition.ColorTint;
-
-            ColorBlock scb = setBtnBtn.colors;
+            // Make profile button clickable (opens settings for now)
+            var profBtnComp = profBtn.gameObject.AddComponent<Button>();
+            profBtnComp.targetGraphic = profBtn.GetComponent<Image>();
+            profBtnComp.onClick.AddListener(OnSettingsClicked);
+            profBtnComp.transition = Selectable.Transition.ColorTint;
+            ColorBlock scb = profBtnComp.colors;
             scb.normalColor = Color.white;
             scb.pressedColor = new Color(0.85f, 0.85f, 0.85f);
             scb.highlightedColor = new Color(1.1f, 1.1f, 1.1f);
             scb.selectedColor = Color.white;
             scb.colorMultiplier = 1f;
             scb.fadeDuration = 0.1f;
-            setBtnBtn.colors = scb;
+            profBtnComp.colors = scb;
+            profBtn.gameObject.AddComponent<ButtonSpringEffect>();
 
-            // Add spring effect to settings button
-            setBtn.gameObject.AddComponent<ButtonSpringEffect>();
+            // ── Hidden compatibility references ──
+            // Gems label (hidden but kept for code that updates it)
+            var hiddenGems = MakePanel(profileArea, "HiddenGems", Color.clear);
+            hiddenGems.gameObject.SetActive(false);
+            mainMenuGemsLabel = MakeText(hiddenGems, "V", "0", 1, Color.clear, FontStyles.Normal).GetComponent<TextMeshProUGUI>();
+
+            // Level label + fill bar (hidden but kept for code that updates them)
+            var hiddenLevel = MakePanel(profileArea, "HiddenLevel", Color.clear);
+            hiddenLevel.gameObject.SetActive(false);
+            playerLevelLabel = MakeText(hiddenLevel, "V", "1", 1, Color.clear, FontStyles.Normal).GetComponent<TextMeshProUGUI>();
+            var hiddenFill = MakePanel(hiddenLevel, "Fill", Color.clear);
+            playerLevelFillBar = hiddenFill.GetComponent<Image>();
 
 
             // ─── END HEADER ───
@@ -853,29 +860,81 @@ namespace IOChef.UI
             featuredItemPriceLabel = pVal.GetComponent<TextMeshProUGUI>();
             Stretch(pVal); featuredItemPriceLabel.alignment = TextAlignmentOptions.Center;
 
-            // ═══ 3. Play Button (Bottom Right) — HEAVY Skew ═══
+            // ═══ 3. Play Button (Bottom Right) — Clean rounded 3D gradient ═══
             var playContainer = MakePanel(root, "PlayContainer", Color.clear);
             playContainer.anchorMin = new Vector2(1, 0); playContainer.anchorMax = new Vector2(1, 0);
             playContainer.pivot = new Vector2(1, 0);
-            playContainer.anchoredPosition = new Vector2(-40, 40);
-            playContainer.sizeDelta = new Vector2(240, 80);
+            playContainer.anchoredPosition = new Vector2(-24, 22);
+            playContainer.sizeDelta = new Vector2(220, 64);
 
-            // Use the new Skewed Helper
-            // Skew X = -0.3 for aggressive slant
-            var playBtn = MakeSkewedButton(
-                playContainer, 
-                "PLAY", 
-                new Color(1.0f, 0.45f, 0.0f), // Face
-                new Color(0.6f, 0.18f, 0.0f), // Shadow
-                Color.white, 
-                36, 
-                240, 
-                80, 
-                OnPlayClicked,
-                -0.3f
-            );
-            // Ensure button fills container
-            Stretch(playBtn);
+            // Shadow / 3D bottom edge — darker orange, offset down, rounded
+            var playShadow = MakePanel(playContainer, "PlayShadow", new Color(0.72f, 0.30f, 0.04f, 1f));
+            playShadow.anchorMin = Vector2.zero; playShadow.anchorMax = Vector2.one;
+            playShadow.offsetMin = new Vector2(0, -5); playShadow.offsetMax = Vector2.zero;
+            playShadow.GetComponent<Image>().sprite = GetRoundedSprite();
+            playShadow.GetComponent<Image>().type = Image.Type.Sliced;
+            playShadow.GetComponent<Image>().raycastTarget = false;
+
+            // Main face — rounded, white base for gradient multiply
+            var playFace = MakePanel(playContainer, "PlayFace", Color.white);
+            playFace.anchorMin = Vector2.zero; playFace.anchorMax = Vector2.one;
+            playFace.offsetMin = Vector2.zero; playFace.offsetMax = Vector2.zero;
+            playFace.GetComponent<Image>().sprite = GetRoundedSprite();
+            playFace.GetComponent<Image>().type = Image.Type.Sliced;
+
+            // Subtle vertical gradient: warm light orange top → deeper orange bottom
+            var faceGrad = playFace.gameObject.AddComponent<UIGradient>();
+            faceGrad.topColor = new Color(1f, 0.68f, 0.25f, 1f);
+            faceGrad.bottomColor = new Color(0.96f, 0.48f, 0.08f, 1f);
+
+            // Content layout: play icon ▶ + "PLAY" text, centered
+            var contentGO = new GameObject("Content", typeof(RectTransform), typeof(HorizontalLayoutGroup));
+            contentGO.transform.SetParent(playFace, false);
+            var contentRT = contentGO.GetComponent<RectTransform>();
+            contentRT.anchorMin = Vector2.zero; contentRT.anchorMax = Vector2.one;
+            contentRT.offsetMin = Vector2.zero; contentRT.offsetMax = Vector2.zero;
+            var hlg = contentGO.GetComponent<HorizontalLayoutGroup>();
+            hlg.childAlignment = TextAnchor.MiddleCenter;
+            hlg.spacing = 8;
+            hlg.childForceExpandWidth = false;
+            hlg.childForceExpandHeight = false;
+
+            // Small play triangle icon
+            var iconRT = MakeText(contentRT, "Icon", "\u25B6", 22, Color.white, FontStyles.Normal);
+            var iconLE = iconRT.gameObject.AddComponent<LayoutElement>();
+            iconLE.preferredWidth = 26; iconLE.preferredHeight = 30;
+            var iconTMP = iconRT.GetComponent<TextMeshProUGUI>();
+            iconTMP.alignment = TextAlignmentOptions.Center;
+
+            // "PLAY" label
+            var playTxt = MakeText(contentRT, "Label", "PLAY", 30, Color.white, FontStyles.Bold);
+            var txtLE = playTxt.gameObject.AddComponent<LayoutElement>();
+            txtLE.preferredHeight = 40;
+            var playTMP = playTxt.GetComponent<TextMeshProUGUI>();
+            playTMP.alignment = TextAlignmentOptions.Center;
+            playTMP.characterSpacing = 6;
+
+            // Subtle text drop shadow
+            var playSh = playTxt.gameObject.AddComponent<Shadow>();
+            playSh.effectColor = new Color(0.35f, 0.12f, 0f, 0.45f);
+            playSh.effectDistance = new Vector2(1, -2);
+
+            // Button component on the face
+            var playBtnComp = playFace.gameObject.AddComponent<Button>();
+            playBtnComp.targetGraphic = playFace.GetComponent<Image>();
+            playBtnComp.onClick.AddListener(OnPlayClicked);
+            playBtnComp.transition = Selectable.Transition.ColorTint;
+            ColorBlock pcb = playBtnComp.colors;
+            pcb.normalColor = Color.white;
+            pcb.highlightedColor = new Color(1.08f, 1.08f, 1.08f);
+            pcb.pressedColor = new Color(0.88f, 0.88f, 0.88f);
+            pcb.selectedColor = Color.white;
+            pcb.fadeDuration = 0.08f;
+            pcb.colorMultiplier = 1f;
+            playBtnComp.colors = pcb;
+
+            // Spring effect for responsive feel
+            playFace.gameObject.AddComponent<ButtonSpringEffect>();
         }
 
         // ─── Recipe Book Click Handler ───
